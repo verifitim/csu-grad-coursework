@@ -1,0 +1,131 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program11\\watertankform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|solutionrelative:watertankform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\watertankform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|solutionrelative:watertankform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program11\\watertank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|solutionrelative:watertank.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program11\\program11.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A8F55F3E-E29C-4FF8-A3EA-7D959EC46243}|Program11.csproj|solutionrelative:program11.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 13,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{33c88fe3-43b3-374e-9aac-c4679036dce0}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{de1fc918-f32e-4dd7-a915-1792a051f26b}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program11.csproj",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\Program11.csproj",
+              "RelativeDocumentMoniker": "Program11.csproj",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\Program11.csproj",
+              "RelativeToolTip": "Program11.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-10-24T03:35:11.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "WaterTank.cs",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTank.cs",
+              "RelativeDocumentMoniker": "WaterTank.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTank.cs",
+              "RelativeToolTip": "WaterTank.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T02:35:14.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WaterTankForm.cs",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTankForm.cs",
+              "RelativeDocumentMoniker": "WaterTankForm.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTankForm.cs",
+              "RelativeToolTip": "WaterTankForm.cs",
+              "ViewState": "AgIAAHAAAAAAAAAAAAAvwIAAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-21T04:28:33.025Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WaterTankForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTankForm.cs",
+              "RelativeDocumentMoniker": "WaterTankForm.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program11\\WaterTankForm.cs [Design]",
+              "RelativeToolTip": "WaterTankForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T19:48:23.735Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

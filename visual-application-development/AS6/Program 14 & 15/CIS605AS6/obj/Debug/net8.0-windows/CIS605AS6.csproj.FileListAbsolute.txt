@@ -1,0 +1,7 @@
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.Program14.resources
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.Program15.resources
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.csproj.GenerateResource.cache
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.GeneratedMSBuildEditorConfig.editorconfig
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.AssemblyInfoInputs.cache
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.AssemblyInfo.cs
+S:\CIS605\Miller,Timothy(timmymil)\Assignments\CIS605AS6\obj\Debug\net8.0-windows\CIS605AS6.csproj.CoreCompileInputs.cache

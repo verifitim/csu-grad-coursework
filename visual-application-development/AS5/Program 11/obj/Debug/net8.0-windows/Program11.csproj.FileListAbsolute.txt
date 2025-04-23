@@ -1,0 +1,16 @@
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\bin\Debug\net8.0-windows\Program11.exe
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\bin\Debug\net8.0-windows\Program11.deps.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\bin\Debug\net8.0-windows\Program11.runtimeconfig.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\bin\Debug\net8.0-windows\Program11.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\bin\Debug\net8.0-windows\Program11.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.WaterTankForm.resources
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.csproj.GenerateResource.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.AssemblyInfoInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.AssemblyInfo.cs
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\refint\Program11.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\Program11.genruntimeconfig.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program11\obj\Debug\net8.0-windows\ref\Program11.dll

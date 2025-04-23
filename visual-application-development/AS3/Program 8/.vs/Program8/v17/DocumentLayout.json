@@ -1,0 +1,147 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program8\\payslipform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|solutionrelative:payslipform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program8\\payslipform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|solutionrelative:payslipform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program8\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
+      "RelativeMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program8\\payslip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|solutionrelative:payslip.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|c:\\users\\timmymil\\onedrive - colostate\\desktop\\assignments\\program8\\payslipform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BB77A273-A39D-449F-ABF3-BCE398F41042}|Program8.csproj|solutionrelative:payslipform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 200,
+          "SelectedChildIndex": 12,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{ca8cc5c7-0231-406a-95cd-aa5ed6ac0190}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{33c88fe3-43b3-374e-9aac-c4679036dce0}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PaySlipForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.Designer.cs",
+              "RelativeDocumentMoniker": "PaySlipForm.Designer.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.Designer.cs",
+              "RelativeToolTip": "PaySlipForm.Designer.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAQwCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T05:56:02.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PaySlipForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.cs",
+              "RelativeDocumentMoniker": "PaySlipForm.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.cs [Design]",
+              "RelativeToolTip": "PaySlipForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T03:17:15.395Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PaySlipForm.cs",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.cs",
+              "RelativeDocumentMoniker": "PaySlipForm.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlipForm.cs",
+              "RelativeToolTip": "PaySlipForm.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T05:51:42.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClassDiagram1.cd",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\ClassDiagram1.cd",
+              "RelativeDocumentMoniker": "ClassDiagram1.cd",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\ClassDiagram1.cd",
+              "RelativeToolTip": "ClassDiagram1.cd",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
+              "WhenOpened": "2024-09-25T04:11:29.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PaySlip.cs",
+              "DocumentMoniker": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlip.cs",
+              "RelativeDocumentMoniker": "PaySlip.cs",
+              "ToolTip": "C:\\Users\\timmymil\\OneDrive - Colostate\\Desktop\\Assignments\\Program8\\PaySlip.cs",
+              "RelativeToolTip": "PaySlip.cs",
+              "ViewState": "AgIAADAAAAAAAAAAAAAgwFcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-25T03:22:17.044Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

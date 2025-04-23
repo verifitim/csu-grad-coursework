@@ -1,0 +1,16 @@
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\bin\Debug\net8.0-windows\Program12.exe
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\bin\Debug\net8.0-windows\Program12.deps.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\bin\Debug\net8.0-windows\Program12.runtimeconfig.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\bin\Debug\net8.0-windows\Program12.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\bin\Debug\net8.0-windows\Program12.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.ProjectileForm.resources
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.csproj.GenerateResource.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.AssemblyInfoInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.AssemblyInfo.cs
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\refint\Program12.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\Program12.genruntimeconfig.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program12\obj\Debug\net8.0-windows\ref\Program12.dll

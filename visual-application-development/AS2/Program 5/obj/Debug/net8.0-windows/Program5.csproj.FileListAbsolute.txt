@@ -1,0 +1,16 @@
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\bin\Debug\net8.0-windows\Program5.exe
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\bin\Debug\net8.0-windows\Program5.deps.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\bin\Debug\net8.0-windows\Program5.runtimeconfig.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\bin\Debug\net8.0-windows\Program5.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\bin\Debug\net8.0-windows\Program5.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.Program5.resources
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.csproj.GenerateResource.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.AssemblyInfoInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.AssemblyInfo.cs
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\refint\Program5.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\Program5.genruntimeconfig.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Program5\obj\Debug\net8.0-windows\ref\Program5.dll

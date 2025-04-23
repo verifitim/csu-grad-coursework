@@ -1,0 +1,32 @@
+C:\Users\timmymil\source\repos\Program7\bin\Debug\net8.0-windows\Program7.exe
+C:\Users\timmymil\source\repos\Program7\bin\Debug\net8.0-windows\Program7.deps.json
+C:\Users\timmymil\source\repos\Program7\bin\Debug\net8.0-windows\Program7.runtimeconfig.json
+C:\Users\timmymil\source\repos\Program7\bin\Debug\net8.0-windows\Program7.dll
+C:\Users\timmymil\source\repos\Program7\bin\Debug\net8.0-windows\Program7.pdb
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.TruckRentalForm.resources
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.csproj.GenerateResource.cache
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.AssemblyInfoInputs.cache
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.AssemblyInfo.cs
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.dll
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\refint\Program7.dll
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.pdb
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\Program7.genruntimeconfig.cache
+C:\Users\timmymil\source\repos\Program7\obj\Debug\net8.0-windows\ref\Program7.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\bin\Debug\net8.0-windows\Program7.exe
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\bin\Debug\net8.0-windows\Program7.deps.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\bin\Debug\net8.0-windows\Program7.runtimeconfig.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\bin\Debug\net8.0-windows\Program7.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\bin\Debug\net8.0-windows\Program7.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.TruckRentalForm.resources
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.csproj.GenerateResource.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.AssemblyInfoInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.AssemblyInfo.cs
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\refint\Program7.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\Program7.genruntimeconfig.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program7\obj\Debug\net8.0-windows\ref\Program7.dll

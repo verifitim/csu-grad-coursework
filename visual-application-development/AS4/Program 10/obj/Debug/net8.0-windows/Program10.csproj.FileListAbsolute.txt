@@ -1,0 +1,16 @@
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\bin\Debug\net8.0-windows\Program10.exe
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\bin\Debug\net8.0-windows\Program10.deps.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\bin\Debug\net8.0-windows\Program10.runtimeconfig.json
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\bin\Debug\net8.0-windows\Program10.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\bin\Debug\net8.0-windows\Program10.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.PropertyTaxForm.resources
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.csproj.GenerateResource.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.AssemblyInfoInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.AssemblyInfo.cs
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.csproj.CoreCompileInputs.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\refint\Program10.dll
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.pdb
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\Program10.genruntimeconfig.cache
+C:\Users\timmymil\OneDrive - Colostate\Desktop\Assignments\Program10\obj\Debug\net8.0-windows\ref\Program10.dll
