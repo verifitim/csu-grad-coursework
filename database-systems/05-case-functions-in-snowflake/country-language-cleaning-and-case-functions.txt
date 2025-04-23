@@ -1,0 +1,175 @@
+/* In this exercise, you will clone data from our 'countrylanguages' table into your own schema, and perform some data cleaning steps. Here is a generall overview of this exercise:
+
+--You will drop any existing country / language tables from your schema (so that we can practice creating them with the CREATE TABLE .....AS shortcut)
+--You will (again) normalize the countrylanguages table to 2NF, and create 'country_temp' and 'countrylang_temp' tables in your schema. 
+--You will perform some data cleaning steps on 'country_temp' and 'countrylang_temp'
+--You will migrate cleaned data from 'country_temp' and 'languages_temp' into finalized/cleaned versions of each table ('country' and 'countrylang')
+
+Follow the instructions below to get started!
+*/
+
+/* PART 1: RE-NORMALIZE 'COUNTRYLANGUAGES' TO 2NF */
+--1(a): Set your working database directory to your own schema. Use the code below to DROP any tables in your schema that pertain to the country_languages dataset. You will practice re-creating these tables with the SQL shortcut we learned.
+DROP TABLE COUNTRY_2NF;
+DROP TABLE COUNTRY_3NF;
+DROP TABLE COUNTRY_LANGUAGES;
+DROP TABLE COUNTRY_LANGUAGES_2NF;
+
+/* 1(b): Now, you will create two normalized tables - country_temp and countrylang_temp - in your schema, using the 2NF column groupings from CIS655_MAIN.WORLD.COUNTRY_LANGUAGES.
+You should create these tables as PERMANENT (not temporary) tables, so that you can continue your work on Thursday if needed.
+Use the CREATE TABLE ... AS (SELECT DISTINCT...) shortcut to create these tables AND migrate their data all in one step. */
+
+--Note: I wouldn't recommend creating primary keys or foreign keys at this step, since we will be cleaning/altering the data. You want to have maximum flexility to alter the table data/structure, and then encode the PK constraint once you're all done!
+
+CREATE TABLE country_temp 
+AS (SELECT DISTINCT COUNTRYCODE, COUNTRYNAME, CONTINENT, REGION, SURFACEAREA,
+COUNTRYPOPULATION, GNP, CAPITALCITYID, CAPITALNAME, CAPITALDISTRICT, CAPITALPOPULATION
+FROM CIS655_MAIN.WORLD.COUNTRY_LANGUAGES) ;
+
+-- <-- Select country-specific columns (countrycode, countryname, continent, region, surfacearea, countrypopulation, gnp, capitalcityid, capitalname, capitaldistrict, capitalpopulation) from the table CIS655_MAIN.WORLD.country_language 
+
+CREATE TABLE countrylang_temp 
+AS (SELECT DISTINCT COUNTRYCODE, LANGUAGE, ISOFFICIAL, PERCENTAGE
+FROM CIS655_MAIN.WORLD.COUNTRY_LANGUAGES) ; 
+
+-- <-- Select full key (country + language) columns (countrycode, language, isofficial, percentage) from the table CIS655_MAIN.WORLD.country_language 
+
+
+/* 1(c): Run the code below to make sure both of your tables have the correct number of rows (232 row countries, 983 rows for country-language ) */
+select * from country_temp LIMIT 20;
+select * from countrylang_temp LIMIT 20;
+
+
+/* PART 2: CLEANING COUNTRYLANG_TEMP */
+
+/* 2(a): First, imagine that we would like to streamling our countrylang_temp table by deleting any languages that are spoken by <1% of the population of their country. You can use a DELETE statement for this, and use the code "percentage < 1" in your WHERE statement to accomplish this.
+When you're done, use SELECT * to view your data; you can click on any column in the data viewer to sort it, and you should see that the lowest percentage for any language in countrylang_temp is 1. Your table should now have 758 rows.
+Don't forget to COMMIT your code once you're done! */
+
+begin;
+
+delete from countrylang_temp
+where percentage < 1;
+
+rollback;
+commit;
+
+
+/* 2(b): Let's reformat the 'Language' column in countrylang_temp so that it appears as all-caps, similar to country code. You can use the SQL function UPPER() for this.
+You may either 'write over' the language column with its uppercase values, or add a new column (e.g., 'language_upper') and populate it with the uppercase values. */
+begin;
+
+update countrylang_temp
+set Language = UPPER(Language);
+
+rollback;
+commit;
+
+/* 2(c): Now, let's reformat the 'percentage' column in countrylang as a decimal (e.g., 10 --> 0.1, 5 --> 0.05). Do this 'in place' by updating the percentage column with its own values divided by 100.
+Do this within a transaction, and don't commit yet! Look at your data and notice how all of the values are rounded to one decimal place (e.g., 0.01 becomes 0.0), which isn't what we want.
+Once you see this, roll back the code, and move to the next question. */
+begin;
+
+
+update countrylang_temp
+set Percentage = Percentage / 100;
+
+
+rollback;
+commit;
+
+
+/* 2(d): If you examine the column structure of countrylang_temp in your left-hand database menu, you'll see that PERCENTAGE has the data format NUMBER(38,1), which means a (up to) 38-digit number, but with only one number after the decimal point.
+This is one of those cases where changing values in-place can create problems, because we would lose information about the percentage if storing it as a number with only one decimal place.
+Unfortunately, Snowflake does not allow us to change the decimal precision of a column, so we will need to add a new column (e.g., percentage_dec) with a FLOAT data type, and populate it with UPDATE.
+Below, add a new percentage_dec column with FLOAT data type, and populate it with percentage values (divided by 100).
+*/
+
+alter table countrylang_temp
+add percentage_dec FLOAT;
+
+update countrylang_temp
+set percentage_dec = percentage / 100;
+
+/* PART 3: CLEANING COUNTRY_TEMP */
+
+/* 3(a): Let's focus on our 'country_temp' table now. Imagine we want to shorten the names of each continent, as follows:
+    -- Africa --> AFR
+    -- Asia --> ASIA
+    -- Europe --> EUR
+    -- North America --> NA
+    -- South America --> SA
+    -- Oceania --> OCEA
+
+Use a CASE statement to map the continents (as they appear in the dataset) to the continent nicknames above. You may do this in a new 'continent_clean' column, or edit the values in-place in the 'continent' column.
+Note - if you're writing over the continent column, be sure to do this within a transaction - you might need to edit your CASE statement a few times to make sure it's correct!
+To check your values, you can view your data and click on the 'continent' (or 'continent_cleaned' column, and see all the unique values in this column on the right-hand side.
+    */
+
+select * from country_temp LIMIT 20;
+
+begin;
+
+update country_temp set continent =
+case when continent LIKE 'Africa' THEN 'AFR'
+when continent LIKE 'Asia' THEN 'ASIA'
+when continent LIKE 'Europe' THEN 'EUR'
+when continent LIKE 'North America' THEN 'NA'
+when continent LIKE 'South America' THEN 'SA'
+when continent LIKE 'Oceania' THEN 'OCEA' 
+END;
+
+rollback;
+commit;
+
+/* 3(b): Finally, let's add a calculated column to our country_temp table - GNP_per_capita (which is a measure of a country's overall economic activity, adjusted for its population). Add this column to your table (as a FLOAT variable),
+then populate it with UPDATE using the formula "1000000 * GNP / countrypopulation" (without the quotation marks). We use the 1000000 because the GNP column is in millions of dollars; this lets us convert back to dollars per person. */
+
+alter table country_temp add GNP_per_capita float;
+
+update country_temp
+set GNP_per_capita = 1000000 * GNP / countrypopulation;
+
+
+/* PART 4: MIGRATING OUR DATA */
+/* 4(a): Finally, you will create two 'final'/'clean' tables - country_final and countrylang_final - using the cleaned data from country_temp and countrylang_temp. These tables should have the following columns:
+
+country_final:
+   --COUNTRYCODE
+   --LANGUAGE (your uppercase version)
+   --ISOFFICIAL
+   --PERCENTAGE (the DECIMAL version you created)
+
+country_final:
+  --COUNTRYCODE
+  --COUNTRYNAME
+  --CONTINENT (the shortened version you created)
+  --REGION
+  --SURFACEAREA
+  --COUNTRYPOPULATION
+  --GNP_PER_PERSON
+  --CAPITALCITYID
+*Don't worry about the other 'capital' columns.
+CREATE these tables, then populate them with data using INSERT (you can also use the shortcut CREATE TABLE .... AS (SELECT *) if you'd like.) Remember to select the correct columns from country_temp and countrylang_temp!
+*/
+begin;
+
+create table countrylang_final 
+as (select distinct COUNTRYCODE, LANGUAGE, ISOFFICIAL, PERCENTAGE_DEC as PERCENTAGE 
+from countrylang_temp);
+
+select * from countrylang_final LIMIT 20;
+
+create table country_final 
+as (select distinct COUNTRYCODE, COUNTRYNAME, CONTINENT, REGION,
+SURFACEAREA, COUNTRYPOPULATION, CAPITALCITYID, GNP_PER_CAPITA as GNP_PER_PERSON
+from country_temp);
+
+select * from country_final LIMIT 20;
+
+commit;
+--When you're done, check to make sure that:
+  -- Your countrylang_final table has language in all-caps, and percentage in decimal form.
+  -- Your country_final table has the shortened version of 'continent', and GNP_per_person instead of GNP
+
+--Once you've confirmed that, you are all done!

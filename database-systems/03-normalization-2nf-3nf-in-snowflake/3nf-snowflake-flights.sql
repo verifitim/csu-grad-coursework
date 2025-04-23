@@ -1,0 +1,79 @@
+-- un-normalized table, atl_flights, lists flights arrivals at ATL airport on a specific day
+-- 35 rows
+SELECT * FROM cis655_main.flights_schema.atl_flights;
+
+-- flight numbers can be re-used between airlines, so not primary key 
+-- 26 rows
+SELECT DISTINCT flightno FROM atl_flights; 
+
+-- airline code and flight number make the composite primary key
+-- 35 rows (same as un-normalized table)
+SELECT DISTINCT airline_code, flightno FROM atl_flights; 
+
+-- PRIMARY KEY COLUMNS: 
+-- airline_code & flightno
+
+-- DEPENDENCIES: 
+-- airline_code --> AIRLINE_NAME, AIRLINE_HQ_CITYST
+-- flightno --> nothing!
+-- airline_code, flightno --> DEP_AIRPORT_CODE, DEP_AIRPORT_CITY, DEP_AIRPORT_ST, NUM_PASSENGERS
+
+-- TRANSITIVE:
+-- dep_airport_code --> DEP_AIRPORT_CITY, DEP_AIRPORT_ST
+
+-- create partial key table
+-- airline_code --> AIRLINE_NAME, AIRLINE_HQ_CITYST
+
+create or replace TABLE ATL_AIRLINES (
+    AIRLINE_CODE VARCHAR(16777216) PRIMARY KEY,
+	AIRLINE_NAME VARCHAR(16777216),
+	AIRLINE_HQ_CITYST VARCHAR(16777216)
+);
+
+-- fill airlines table
+INSERT INTO ATL_AIRLINES
+SELECT DISTINCT AIRLINE_CODE, AIRLINE_NAME, AIRLINE_HQ_CITYST FROM CIS655_MAIN.FLIGHTS_SCHEMA.ATL_FLIGHTS;
+
+-- create composite key table
+-- airline_code, flightno --> DEP_AIRPORT_CODE, DEP_AIRPORT_CITY, DEP_AIRPORT_ST, NUM_PASSENGERS
+
+create or replace TABLE ATL_FLIGHTS (
+	AIRLINE_CODE VARCHAR(16777216) PRIMARY KEY,
+	FLIGHTNO NUMBER(38,0) PRIMARY KEY,
+	DEP_AIRPORT_CODE VARCHAR(16777216),
+	DEP_AIRPORT_CITY VARCHAR(16777216),
+	DEP_AIRPORT_ST VARCHAR(16777216),
+	NUM_PASSENGERS NUMBER(38,0)
+);
+
+-- fill flights table
+INSERT INTO ATL_FLIGHTS
+SELECT DISTINCT AIRLINE_CODE, FLIGHTNO, DEP_AIRPORT_CODE, DEP_AIRPORT_CITY, DEP_AIRPORT_ST, NUM_PASSENGERS
+FROM CIS655_MAIN.FLIGHTS_SCHEMA.ATL_FLIGHTS;
+
+-- create transitive key table
+-- dep_airport_code --> DEP_AIRPORT_CITY, DEP_AIRPORT_ST
+
+create or replace TABLE ATL_AIRPORT (
+	DEP_AIRPORT_CODE VARCHAR(16777216) PRIMARY KEY,
+	DEP_AIRPORT_CITY VARCHAR(16777216),
+	DEP_AIRPORT_ST VARCHAR(16777216)
+);
+
+-- fill airport table
+INSERT INTO ATL_AIRPORT
+SELECT DISTINCT DEP_AIRPORT_CODE, DEP_AIRPORT_CITY, DEP_AIRPORT_ST
+FROM CIS655_MAIN.FLIGHTS_SCHEMA.ATL_FLIGHTS;
+
+-- ADD FOREIGN KEYS
+-- from flights table referencing airlines
+ALTER TABLE ATL_FLIGHTS
+ADD CONSTRAINT FK_AIRLINE
+FOREIGN KEY (AIRLINE_CODE) REFERENCES ATL_AIRLINES (AIRLINE_CODE);
+
+-- from flights table referencing airlines
+ALTER TABLE ATL_FLIGHTS
+ADD CONSTRAINT FK_AIRPORT
+FOREIGN KEY (DEP_AIRPORT_CODE) REFERENCES ATL_AIRLINES (DEP_AIRPORT_CODE);
+
+
