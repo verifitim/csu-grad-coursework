@@ -35,9 +35,14 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 .detail-section p{font-size:13px}.qualification-row{border-top:1px solid var(--line);padding:15px 0}.qualification-row:first-of-type{border:0}.qualification-row h3{font-size:13px;margin:7px 0}.qualification-row p{font-size:12px;margin:5px 0;color:#5a6675}
 #match-status{position:sticky;top:0;background:white;z-index:2}
 @media(max-width:600px){.job-context{padding:18px}.results-bar{align-items:flex-start}.candidate h3{font-size:21px}}
-</style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker">Job seeker</option><option value="hiring-manager" selected>Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../job-posting/?nav=4">Job Posting</option><option value="../candidate-matches/?nav=4" selected>Candidate Matches</option></select></div></nav></header><main>
+
+.evidence-focus{font-size:12px;padding:14px 0;color:#536477}
+.evidence-focus h3{font-size:12px;margin:0 0 7px;color:#273e58;letter-spacing:0}
+.evidence-focus p{margin:5px 0 12px;font-size:12px}
+.evidence-focus ul{margin:5px 0 12px;padding-left:18px}.evidence-focus li{margin:5px 0}
+</style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker">Job seeker</option><option value="hiring-manager" selected>Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../job-posting/?nav=5">Job Posting</option><option value="../candidate-matches/?nav=5" selected>Candidate Matches</option></select></div></nav></header><main>
 <div class="intro"><small class="eyebrow">CANDIDATE MATCHES</small><h1>See the fit behind the background.</h1><p class="muted">Review candidates against your job’s qualifications, including relevant abilities that a degree or job title may not reveal.</p></div>
-<section class="job-context" aria-labelledby="job-label"><label id="job-label" for="selected-job">Which job are you filling?</label><select id="selected-job"></select><p class="job-meta" id="job-meta"></p><a href="../job-posting/?nav=4">Edit job posting & qualifications</a><div id="approach-description" class="explanation"></div><details class="criteria-summary"><summary id="criteria-summary-label">Review job qualifications</summary><div id="criteria-summary"></div></details></section>
+<section class="job-context" aria-labelledby="job-label"><label id="job-label" for="selected-job">Which job are you filling?</label><select id="selected-job"></select><p class="job-meta" id="job-meta"></p><a href="../job-posting/?nav=5">Edit job posting & qualifications</a><div id="approach-description" class="explanation"></div><details class="criteria-summary"><summary id="criteria-summary-label">Review job qualifications</summary><div id="criteria-summary"></div></details></section>
 <div class="row results-bar"><div><h2>Candidates to consider</h2><small id="candidate-count" role="status" aria-live="polite"></small></div><div><label for="candidate-filter">Show</label><select id="candidate-filter"><option value="all">All candidates</option><option value="shortlisted">Shortlisted candidates</option></select></div></div>
 <div id="match-status" class="status" role="status" aria-live="polite"></div>
 <div id="candidate-results"></div>
@@ -48,8 +53,8 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 'use strict';
 // Add each new persona page to this navigation map on both pages.
 const personaPages={
-'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=4'},{label:'Job Search',href:'../job-search/?nav=4'}],
-'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=4'},{label:'Candidate Matches',href:'../candidate-matches/?nav=4'}]
+'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=5'},{label:'Job Search',href:'../job-search/?nav=5'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=5'},{label:'Candidate Matches',href:'../candidate-matches/?nav=5'}]
 };
 const personaSelect=document.getElementById('persona');
 const pageSelect=document.getElementById('page-navigation');
@@ -83,7 +88,7 @@ const operations={title:'Operations Coordinator',company:'Juniper Supply Co.',lo
 {name:'Coordinate schedules and changing priorities',type:'Skill',level:'required',context:'Organize people, tasks, or coverage in work, a project, or a volunteer role.'},
 {name:'Communicate clearly with customers and colleagues',type:'Skill',level:'required',context:'Explain a process, handle a concern, or keep a team informed.'},
 {name:'Use spreadsheets to track work',type:'Skill',level:'required',context:'Track orders, inventory, schedules, or project progress.'},
-{name:'Business coursework or equivalent practical experience',type:'Education',level:'preferred',context:'Relevant coursework or experience organizing business operations.'},
+{name:'Business degree or equivalent practical experience',type:'Education',level:'preferred',context:'A business degree, or practical experience coordinating schedules, orders, and operational processes.'},
 {name:'Experience improving an operational workflow',type:'Experience',level:'preferred',context:'Describe a process improvement and its outcome.'}
 ]};
 const training={title:'Training Coordinator',company:'Juniper Supply Co.',location:'Fort Collins, CO',arrangement:'Hybrid',evaluation:'both',criteria:[
@@ -94,16 +99,37 @@ const training={title:'Training Coordinator',company:'Juniper Supply Co.',locati
 ]};
 let activePosting=structuredClone(operations);
 try{const saved=JSON.parse(localStorage.getItem('team4-us14-job-posting-v1'));if(saved&&saved.title&&Array.isArray(saved.criteria))activePosting=saved;}catch(e){}
+for(const criterion of activePosting.criteria){
+if(criterion.name==='Business coursework or equivalent practical experience'){criterion.name='Business degree or equivalent practical experience';criterion.context='A business degree, or practical experience coordinating schedules, orders, and operational processes.';}
+if(!criterion.route)criterion.route=/or equivalent/i.test(criterion.name)?'equivalent':'specified';
+}
 const postings=[activePosting,training];
 postings.forEach((job,index)=>{const option=node('option',job.title+' · '+job.company);option.value=index;$('selected-job').append(option);});
 const candidates=[
 {id:'jamie',name:'Jamie Chen',title:'Operations Specialist',company:'Aspen Distribution',location:'Denver, CO',label:'Direct operations experience',education:'B.S. Business Administration · Western Plains University',experience:'Four years coordinating order fulfillment and inventory reporting.',
 evidence:{coordination:'Coordinated weekly coverage for an 18-person fulfillment team.',communication:'Worked with customer service to resolve delayed orders and provide status updates.',tracking:'Maintained Excel inventory reports and order trackers.',education:'B.S. Business Administration and four years in distribution operations.',improvement:'Redesigned a handoff checklist that reduced repeat order corrections.',training:null}},
-{id:'alex',name:'Alex Morgan',title:'Retail Shift Lead & Volunteer Organizer',company:'Pine Market / Northside Community Pantry',location:'Fort Collins, CO',label:'Transferable experience across roles',education:'Business coursework · Front Range Community College',experience:'Three years organizing shifts, supporting colleagues, and coordinating community events.',
+{id:'alex',name:'Alex Morgan',title:'Retail Shift Lead',company:'Pine Market',location:'Fort Collins, CO',label:'Transferable experience across roles',education:'Business coursework · Front Range Community College',experience:'Three years organizing shifts, supporting colleagues, and coordinating community events.',
 evidence:{coordination:'Scheduled shifts for 12 coworkers and arranged last-minute coverage.',communication:'Resolved customer concerns and kept colleagues informed during shift changes.',tracking:'Built a spreadsheet tracker that reduced missed orders by 25%.',education:'Business coursework plus practical scheduling and order-management experience.',improvement:'Introduced an order tracker and reduced missed orders by 25%.',training:'Trained four new colleagues on order and inventory procedures.'}},
 {id:'riley',name:'Riley Patel',title:'Customer Support Trainer',company:'Meadow Services',location:'Lakewood, CO',label:'Strength in communication and training',education:'Customer Service Professional Certificate',experience:'Five years supporting customers and teaching new colleagues service procedures.',
 evidence:{coordination:null,communication:'Handled escalated customer questions and wrote clear follow-up instructions.',tracking:null,education:null,improvement:'Updated support instructions to reduce repeated questions.',training:'Led onboarding sessions for six new support colleagues.'}}
 ];
+
+const alex=candidates.find(candidate=>candidate.id==='alex');
+alex.education='Business coursework · Front Range Community College; Workplace Safety Certificate';
+alex.confirmedSkills=['Event planning'];
+try{const profile=JSON.parse(localStorage.getItem('cis675-skillbridge-profile-v1'));
+if(profile&&profile.profile){
+alex.name=profile.profile.name||alex.name;alex.location=profile.profile.location||alex.location;
+if(profile.experiences&&profile.experiences.length){
+const work=profile.experiences[0];
+alex.title=work.title==='Operations Coordinator'&&work.org==='Juniper Supply Co.'?'Retail Shift Lead':work.title;
+alex.company=work.title==='Operations Coordinator'&&work.org==='Juniper Supply Co.'?'Pine Market':work.org;
+alex.experience=profile.experiences.map(e=>e.detail).join(' ');
+}
+if(profile.qualifications)alex.education=profile.qualifications;
+alex.confirmedSkills=(profile.skills||[]).filter(skill=>skill.state==='confirmed').map(skill=>skill.name);
+}}
+catch(e){}
 let shortlist={};try{shortlist=JSON.parse(localStorage.getItem('team4-candidate-shortlists'))||{};}catch(e){}
 function currentJob(){return postings[Number($('selected-job').value)||0];}
 function jobKey(){return currentJob().company+'::'+currentJob().title;}
@@ -111,6 +137,7 @@ function selectedIds(){return shortlist[jobKey()]||[];}
 function evidenceFor(candidate,criterion){
 const text=criterion.name.toLowerCase();
 let key=null;
+if(/degree/.test(text)&&!/or equivalent/i.test(text)&&criterion.route!=='equivalent'&&candidate.id!=='jamie')return null;
 if(/train|onboard|teach/.test(text))key='training';
 else if(/schedul|priorit|coordinat/.test(text))key='coordination';
 else if(/communicat|customer/.test(text))key='communication';
@@ -127,6 +154,21 @@ const required=job.criteria.filter(c=>c.level==='required').length;
 $('criteria-summary-label').textContent='Review '+required+' required and '+(job.criteria.length-required)+' preferred qualifications';
 $('criteria-summary').replaceChildren();
 for(const level of ['required','preferred']){const title=node('h3',level==='required'?'Required':'Preferred');const list=node('ul');job.criteria.filter(c=>c.level===level).forEach(c=>list.append(node('li',c.name)));$('criteria-summary').append(title,list);}
+}
+function mode(){return currentJob().evaluation||'both';}
+function appendEvaluationFocus(container,candidate){
+const focus=node('div',undefined,'evidence-focus');
+if(mode()!=='skills'){
+focus.append(node('h3','Qualifications & work history'),node('p',candidate.education),node('p',candidate.experience));
+}
+if(mode()!=='traditional'){
+focus.append(node('h3','Demonstrated & transferable abilities'));
+const relevant=currentJob().criteria.filter(criterion=>criterion.type!=='Education'&&criterion.type!=='Certification').filter(criterion=>evidenceFor(candidate,criterion));
+if(relevant.length){const list=node('ul');for(const criterion of relevant.slice(0,3))list.append(node('li',evidenceFor(candidate,criterion)));focus.append(list);}
+else focus.append(node('p','Review this candidate’s experience for supporting examples.'));
+if(candidate.confirmedSkills)focus.append(node('p','Candidate-confirmed skills: '+(candidate.confirmedSkills.join(', ')||'None added yet.')));
+}
+container.append(focus);
 }
 function story(candidate){
 const job=currentJob();
@@ -148,7 +190,8 @@ $('candidate-count').textContent=visible.length+' candidates · '+selectedIds().
 $('candidate-results').replaceChildren();
 for(const candidate of visible){
 const card=node('article',undefined,'candidate');card.append(node('div',candidate.label,'path-label'),node('h3',candidate.name),node('p',candidate.title+' · '+candidate.company+' · '+candidate.location,'background'));
-const why=node('div',undefined,'match-story');why.append(node('strong','Why consider this candidate?'),node('span',story(candidate)));card.append(why);
+appendEvaluationFocus(card,candidate);
+if(mode()!=='traditional'){const why=node('div',undefined,'match-story');why.append(node('strong','Why consider this candidate?'),node('span',story(candidate)));card.append(why);}
 const required=currentJob().criteria.filter(c=>c.level==='required');
 const supported=required.filter(c=>evidenceFor(candidate,c)).length;
 const preview=node('div',undefined,'evidence-preview');preview.append(node('span',supported+' of '+required.length+' required criteria have supporting evidence','signal good'));
@@ -160,13 +203,16 @@ if(!visible.length)$('candidate-results').append(node('p','No candidates shortli
 }
 function showCandidate(candidate){
 $('detail-heading').textContent=candidate.name;const content=$('detail-content');content.replaceChildren(node('p',candidate.title+' · '+candidate.company),node('p',candidate.experience),node('p',candidate.education));
-const why=node('div',undefined,'match-story');why.append(node('strong','Connection to '+currentJob().title),node('span',story(candidate)));content.append(why);
+appendEvaluationFocus(content,candidate);
+if(mode()!=='traditional'){const why=node('div',undefined,'match-story');why.append(node('strong','Connection to '+currentJob().title),node('span',story(candidate)));content.append(why);}
 for(const level of ['required','preferred']){
 const section=node('div',undefined,'detail-section');section.append(node('h3',level==='required'?'Required qualifications':'Preferred qualifications'));
 const criteria=currentJob().criteria.filter(c=>c.level===level);
 if(!criteria.length)section.append(node('p','None specified for this job.'));
 for(const criterion of criteria){const evidence=evidenceFor(candidate,criterion);const row=node('div',undefined,'qualification-row');row.append(node('span',evidence?'Supporting evidence':'Needs review','signal '+(evidence?'good':'review')),node('h3',criterion.name),node('p',evidence||'No supporting information is available in this profile. Clarify with the candidate before deciding.'));
-if(criterion.context)row.append(node('p','What you are looking for: '+criterion.context));section.append(row);}content.append(section);
+if(criterion.context)row.append(node('p','What you are looking for: '+criterion.context));
+if(criterion.route==='equivalent'||/or equivalent/i.test(criterion.name))row.append(node('p','Acceptable route: the stated qualification or equivalent experience.'));
+row.append(node('p','Review question: '+(evidence?'Confirm the scope and results of this experience with the candidate.':'Ask the candidate for a relevant example or credential.')));section.append(row);}content.append(section);
 }
 $('candidate-detail').showModal();
 }
