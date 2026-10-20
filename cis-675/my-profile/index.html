@@ -144,6 +144,21 @@ button:disabled{cursor:wait;opacity:.65}
 .move-feedback button{margin-left:6px;padding:3px 7px;color:#265e47}
 #my-skills-bucket:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 @media(max-width:650px){.skill-bucket{padding:19px}.skill-bucket .discovery{padding:15px}.bucket-heading{align-items:flex-start}.profile-flow .bucket-heading h2{font-size:21px}.workflow-guide{font-size:10px;gap:9px}}
+
+/* A single discovery cue, staggered by skill; no repeated flashing. */
+.skill h3.skill-found-highlight{
+width:fit-content;max-width:100%;border-radius:3px;
+background-image:linear-gradient(100deg,transparent 0%,transparent 18%,#dceaff 38%,#e9f2ff 63%,transparent 83%,transparent 100%);
+background-size:280% 100%;background-repeat:no-repeat;
+animation:skill-found-sweep 1250ms ease-out both;
+}
+@keyframes skill-found-sweep{
+0%{background-position:140% 0;box-shadow:0 0 0 0 transparent}
+25%{box-shadow:0 0 0 4px #e9f2ff80}
+65%{box-shadow:0 0 0 4px #e9f2ff40}
+100%{background-position:-60% 0;box-shadow:0 0 0 0 transparent}
+}
+@media(prefers-reduced-motion:reduce){.skill h3.skill-found-highlight{animation:none;background:none;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -167,7 +182,7 @@ button:disabled{cursor:wait;opacity:.65}
 <div class="workflow-guide" aria-label="Skill review process"><strong>Find skills</strong><span aria-hidden="true">→</span><strong>Review discoveries</strong><span aria-hidden="true">→</span><strong>Add to My skills</strong></div>
 <section class="skill-bucket" id="discovered-bucket" aria-labelledby="discovered-heading">
 <div class="bucket-heading"><div><small class="eyebrow">DISCOVER & REVIEW</small><h2 id="discovered-heading">Discovered skills</h2></div><span class="bucket-count" id="pending-count"></span></div>
-<p class="bucket-description">Possible abilities from your experience. Review each one and choose what belongs in My skills.</p>
+<p class="bucket-description">Skills your experience may demonstrate. Review each suggestion and add the ones that describe you to your profile.</p>
 <section class="discovery" aria-labelledby="discovery-heading"><small class="eyebrow">START WITH YOUR EXPERIENCE</small><h2 id="discovery-heading">Find abilities you may not have named yet.</h2><p class="muted">Describe a task, accomplishment, or problem you solved. Paid work, volunteering, school projects, and everyday responsibilities all count.</p>
 <label for="accomplishment">What did you do, and what changed because of it?</label><textarea id="accomplishment" maxlength="2000">I scheduled shifts for 12 coworkers and handled last-minute coverage. I also trained four new colleagues on our order and inventory procedures.</textarea>
 <div class="actions"><button class="primary" id="discover-skills" aria-controls="skill-results suggestions">Find my skills</button></div><div id="discovery-progress" class="discovery-progress" role="status" aria-live="polite" hidden><span class="thinking-dot" aria-hidden="true"></span><span id="progress-message">Looking at your experience…</span></div>
@@ -317,6 +332,14 @@ $('results-description').textContent=reviewCount?'They are listed right here. Ch
 $('skill-results').hidden=false;
 $('skill-results').focus({preventScroll:true});
 $('skill-results').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+if(reviewCount&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
+const titles=[...$('suggestions').querySelectorAll('.skill h3')].slice(0,reviewCount);
+titles.forEach((title,index)=>{
+title.style.animationDelay=(350+index*120)+'ms';
+title.classList.add('skill-found-highlight');
+title.addEventListener('animationend',()=>{title.classList.remove('skill-found-highlight');title.style.animationDelay='';},{once:true});
+});
+}
 }catch(error){say('We could not finish finding skills. Please try again.');}
 finally{
 trigger.disabled=false;trigger.textContent='Find my skills';
