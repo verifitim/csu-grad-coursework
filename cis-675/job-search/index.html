@@ -37,7 +37,7 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 .detail-list{font-size:13px;padding-left:20px}.detail-block{border-top:1px solid var(--line);padding-top:18px;margin-top:18px}.detail-block p{font-size:13px}
 .empty-state{padding:30px 0;color:var(--muted)}
 @media(max-width:600px){.search-box{padding:18px}}
-</style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/?nav=3">My Profile</option><option value="../job-search/?nav=3" selected>Job Search</option></select></div></nav></header><main>
+</style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/?nav=4">My Profile</option><option value="../job-search/?nav=4" selected>Job Search</option></select></div></nav></header><main>
 <div class="intro"><small class="eyebrow">JOB SEARCH</small><h1>Your skills can take you further.</h1><p class="muted">Find roles you know—and opportunities you might not have thought to search for.</p></div>
 <form id="search-form" class="search-box"><label for="query">Job title, skill, or keyword</label><input id="query" placeholder="Try coordination, training, or operations">
 <div class="grid"><div><label for="search-location">Location</label><select id="search-location"><option value="all">All locations</option><option value="Colorado">Colorado</option><option value="Remote">Remote</option></select></div><div><label for="search-mode">Show me</label><select id="search-mode"><option value="skills">Roles connected to my skills</option><option value="all">All jobs</option></select></div></div>
@@ -51,8 +51,8 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 'use strict';
 // Add each new persona page to this navigation map on both pages.
 const personaPages={
-'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=3'},{label:'Job Search',href:'../job-search/?nav=3'}],
-'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=3'}]
+'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=4'},{label:'Job Search',href:'../job-search/?nav=4'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=4'},{label:'Candidate Matches',href:'../candidate-matches/?nav=4'}]
 };
 const personaSelect=document.getElementById('persona');
 const pageSelect=document.getElementById('page-navigation');
