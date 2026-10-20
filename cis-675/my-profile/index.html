@@ -159,10 +159,15 @@ animation:skill-found-sweep 2100ms ease-out both;
 100%{background-position:-60% 0;box-shadow:0 0 0 0 transparent}
 }
 @media(prefers-reduced-motion:reduce){.skill h3.skill-found-highlight{animation:none;background:none;box-shadow:none}}
+
+.persona-chooser{display:flex;align-items:center;gap:10px}
+.persona-chooser label{margin:0;font-size:11px;font-weight:500;color:var(--muted)}
+.persona-chooser select{width:auto;min-width:145px;padding:7px 28px 7px 10px;font:500 12px/1.5 ui-sans-serif,system-ui;color:var(--ink);border:1px solid var(--line);border-radius:5px;background-color:#fff;cursor:pointer}
+@media(max-width:480px){.persona-chooser{gap:6px}.persona-chooser label{font-size:10px}.persona-chooser select{min-width:130px;font-size:11px}}
 </style>
 </head>
 <body>
-<header><div class="brand">Team 4</div><span class="account-label">Job seeker</span></header>
+<header><div class="brand">Team 4</div><div class="persona-chooser"><label for="persona">Persona</label><select id="persona" aria-label="Choose persona"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div></header>
 <main>
 <div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div></div>
 
@@ -207,6 +212,11 @@ animation:skill-found-sweep 2100ms ease-out both;
 <dialog id="editor"><form id="edit-form"><h2 id="editor-title"></h2><div id="editor-fields"></div><div class="actions"><button class="primary" type="submit">Save changes</button><button type="button" id="cancel">Cancel</button></div></form></dialog>
 <script>
 'use strict';
+document.getElementById('persona').addEventListener('change',event=>{
+const destinations={'job-seeker':'../my-profile/','hiring-manager':'../job-posting/'};
+const destination=destinations[event.target.value];
+if(destination)window.location.assign(destination);
+});
 const key='cis675-skillbridge-profile-v1';
 const initial={
 profile:{name:'Alex Morgan',location:'Fort Collins, CO',headline:'Operations coordinator | Turning everyday work into better systems',about:'I help busy teams stay organized, solve customer problems, and improve how work gets done. I am exploring opportunities where I can bring my coordination and problem-solving skills.'},
