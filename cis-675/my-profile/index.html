@@ -310,7 +310,8 @@ else {state.skills.push(entry);prioritized.push(entry);}
 reviewCount++;
 }
 state.skills=[...prioritized,...state.skills.filter(s=>!prioritized.includes(s))];
-save(reviewCount?'Your Discovered skills are ready to review.':confirmedCount?'Your experience supports skills you have already confirmed.':'Add more detail to uncover possible skills.');
+persist();
+render();
 $('results-title').textContent=reviewCount?reviewCount+' discovered skill'+(reviewCount===1?'':'s')+' ready to review':confirmedCount?'Your experience backs up your skills.':'Let’s bring your experience into focus.';
 $('results-description').textContent=reviewCount?'They are listed right here. Choose Add to My skills to include one in your profile, or edit or dismiss it.'+(confirmedCount?' It also supports '+confirmedCount+' skill'+(confirmedCount===1?'':'s')+' you already confirmed.':''):confirmedCount?'We found '+confirmedCount+' skill'+(confirmedCount===1?'':'s')+' already in My skills below. Add another accomplishment to explore more of your abilities.':'Tell us who you helped, what you organized or solved, and what changed. You can also add a skill directly below.';
 $('skill-results').hidden=false;
