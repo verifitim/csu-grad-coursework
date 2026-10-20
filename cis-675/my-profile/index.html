@@ -108,6 +108,17 @@ footer{padding-top:0}
 .profile-overview .upload p{display:block;margin:10px 0;font-size:12px}
 .profile-overview #profile-details .grid{display:block}
 .profile-overview #profile-details>p{font-size:13px}
+
+button:disabled{cursor:wait;opacity:.65}
+.discovery-progress{display:flex;align-items:center;gap:10px;color:#536174;font-size:12px;margin-top:18px;min-height:24px}
+.discovery-progress[hidden],.skill-results[hidden]{display:none}
+.thinking-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:thinking 1s ease-in-out infinite}
+@keyframes thinking{50%{opacity:.25;transform:scale(.7)}}
+.skill-results{border-left:3px solid var(--accent);padding:4px 0 4px 18px;margin:18px 0 26px;scroll-margin-top:76px}
+.skill-results h2{font-size:24px;letter-spacing:-.6px}
+.skill-results p{font-size:13px;line-height:1.8;color:#536174;margin:8px 0 0}
+.skill-results:focus{outline:none}.skill-results:focus-visible{outline:2px solid var(--accent);outline-offset:6px}
+@media(prefers-reduced-motion:reduce){.thinking-dot{animation:none}}
 </style>
 </head>
 <body>
@@ -129,10 +140,10 @@ footer{padding-top:0}
 <div class="profile-flow">
 <section class="card discovery" aria-labelledby="discovery-heading"><small class="eyebrow">01 / START WITH SOMETHING YOU DID</small><h2 id="discovery-heading">There may be more to your experience than you think.</h2><p class="muted">Describe a task, accomplishment, or problem you solved. Paid work, volunteering, school projects, and everyday responsibilities all count.</p>
 <label for="accomplishment">What did you do, and what changed because of it?</label><textarea id="accomplishment" maxlength="2000">I scheduled shifts for 12 coworkers and handled last-minute coverage. I also trained four new colleagues on our order and inventory procedures.</textarea>
-<div class="actions"><button class="primary" id="discover-skills">Find my skills</button></div>
+<div class="actions"><button class="primary" id="discover-skills" aria-controls="skill-results suggestions">Find my skills</button></div><div id="discovery-progress" class="discovery-progress" role="status" aria-live="polite" hidden><span class="thinking-dot" aria-hidden="true"></span><span id="progress-message">Looking at your experience…</span></div>
 
 </section>
-<div class="section-intro"><small class="eyebrow">02 / RECOGNIZE YOUR TRANSFERABLE ABILITIES</small></div>
+<div class="section-intro"><small class="eyebrow">02 / RECOGNIZE YOUR TRANSFERABLE ABILITIES</small><div id="skill-results" class="skill-results" tabindex="-1" role="status" aria-live="polite" hidden><h2 id="results-title"></h2><p id="results-description"></p></div></div>
 <section class="card"><div class="row"><h2>What your experience could show</h2><span class="count" id="pending-count"></span></div><p class="muted">Your job title tells part of the story. These suggestions connect what you did to abilities that can matter in other roles.</p><p class="skill-guidance">Confirming a skill means you believe it represents your abilities. Candidate-confirmed skills are not independently verified.</p><div id="suggestions"></div><button id="restore" hidden>Restore dismissed suggestions</button></section>
 <section class="card"><div class="row"><h2>Skills you stand behind</h2><button id="add-skill">+ Add skill</button></div><p class="muted">Review your confirmed skills or add another skill with supporting experience.</p><div id="confirmed"></div></section>
 <div class="section-intro"><small class="eyebrow">03 / COMPLETE THE PICTURE</small><h2>Your experience and qualifications</h2><p class="muted">Skills add context to your background. Keep your work history, education, and credentials up to date.</p></div>
@@ -220,26 +231,52 @@ $('remove-resume').onclick=()=>{state.resume='';save('Resume removed.');};
 
 $('edit-profile-toggle').onclick=()=>{const panel=$('profile-details');panel.hidden=!panel.hidden;$('edit-profile-toggle').setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden)$('name').focus();};
 $('edit-qualifications').onclick=()=>openEditor('Education & certifications',[{key:'details',label:'Education, coursework, certifications, and dates',value:state.qualifications||$('qualification-text').textContent,multiline:true,required:true}],values=>{state.qualifications=values.details;save('Qualifications updated.');});
-$('discover-skills').onclick=()=>{
+$('discover-skills').onclick=async()=>{
 const story=$('accomplishment').value.trim();
-if(story.length<20){say('Describe a specific task or accomplishment in a little more detail.');return;}
-const rules=[
-{test:/schedul|shifts|coverage/i,name:'Team coordination',context:'Scheduling people and managing coverage may demonstrate organizing work across a team.',transfer:'Coordinating staff, volunteers, or project contributors across different industries.'},
-{test:/train|onboard|taught|teach/i,name:'Training and onboarding',context:'Helping colleagues learn procedures may demonstrate explaining tasks and supporting others.',transfer:'Employee onboarding, customer education, and peer training.'},
-{test:/spreadsheet|tracker/i,name:'Spreadsheet-based tracking',context:'Building or using a tracker may demonstrate organizing information to support decisions.',transfer:'Order tracking, project administration, inventory support, and reporting.'},
-{test:/reduc|improv|saved|bottleneck/i,name:'Process improvement',context:'Describing a change and its result may demonstrate finding ways to improve how work gets done.',transfer:'Improving workflows in operations, administration, or service delivery.'}
+if(story.length<20){say('Describe a specific task or accomplishment in a little more detail.');$('accomplishment').focus();return;}
+const trigger=$('discover-skills');
+if(trigger.disabled)return;
+trigger.disabled=true;
+trigger.textContent='Finding skills…';
+$('accomplishment').readOnly=true;
+$('discovery-progress').hidden=false;
+$('discovery-progress').setAttribute('aria-busy','true');
+$('progress-message').textContent='Looking at your responsibilities and accomplishments…';
+$('skill-results').hidden=true;
+say('');
+try{
+await new Promise(resolve=>setTimeout(resolve,900));
+$('progress-message').textContent='Connecting your experience to transferable skills…';
+await new Promise(resolve=>setTimeout(resolve,1100));
+const matches=[
+{name:'Team coordination',context:'Coordinating schedules for 12 coworkers demonstrates organizing people and adapting when plans change.',evidence:'Operations Coordinator · Scheduled shifts for 12 coworkers and handled last-minute coverage.',transfer:'Project coordination, staff scheduling, and volunteer management.'},
+{name:'Training and onboarding',context:'Teaching four new colleagues shows an ability to explain processes and help others become effective.',evidence:'Operations Coordinator · Trained four new colleagues on order and inventory procedures.',transfer:'Employee onboarding, customer education, and peer training.'},
+{name:'Process improvement',context:'Creating a tracker and reducing missed orders shows an ability to turn an everyday problem into a better workflow.',evidence:'Operations Coordinator · Built a spreadsheet tracker that reduced missed orders by 25%.',transfer:'Workflow improvement in operations, administration, and service delivery.'}
 ];
-const matches=rules.filter(r=>r.test.test(story));
-if(!matches.length){say('No new skills identified yet. Add more detail about your responsibilities and results, or add a skill yourself.');return;}
-let added=0;
+let reviewCount=0,confirmedCount=0;
+const prioritized=[];
 for(const r of matches){
 const existing=state.skills.find(s=>s.name===r.name&&s.state!=='dismissed');
-if(existing&&existing.state==='confirmed')continue;
-const entry={name:r.name,context:r.context,evidence:story,transfer:r.transfer,state:'suggested'};
-if(existing)Object.assign(existing,entry);else state.skills.push(entry);added++;
+if(existing&&existing.state==='confirmed'){confirmedCount++;continue;}
+const entry={name:r.name,context:r.context,evidence:r.evidence,transfer:r.transfer,state:'suggested'};
+if(existing){Object.assign(existing,entry);prioritized.push(existing);}
+else {state.skills.push(entry);prioritized.push(entry);}
+reviewCount++;
 }
-save(added?added+' skill suggestions are ready for your review.':'These abilities are already in your confirmed skills.');
-$('suggestions').scrollIntoView({behavior:'smooth',block:'start'});
+state.skills=[...prioritized,...state.skills.filter(s=>!prioritized.includes(s))];
+save(reviewCount?'Your skill suggestions are ready.':confirmedCount?'Your experience supports skills you have already confirmed.':'Add more detail to uncover possible skills.');
+$('results-title').textContent=reviewCount?'You have '+reviewCount+' skill'+(reviewCount===1?'':'s')+' to consider.':confirmedCount?'Your experience backs up your skills.':'Let’s bring your experience into focus.';
+$('results-description').textContent=reviewCount?'Your experience may be useful beyond your current role. Review the connections below, then confirm, edit, or dismiss each suggestion.'+(confirmedCount?' It also supports '+confirmedCount+' skill'+(confirmedCount===1?'':'s')+' you already confirmed.':''):confirmedCount?'We found '+confirmedCount+' skill'+(confirmedCount===1?'':'s')+' already in your confirmed list. Add another accomplishment to explore more of your abilities.':'Tell us who you helped, what you organized or solved, and what changed. You can also add a skill directly below.';
+$('skill-results').hidden=false;
+$('skill-results').focus({preventScroll:true});
+$('skill-results').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+}catch(error){say('We could not finish finding skills. Please try again.');}
+finally{
+trigger.disabled=false;trigger.textContent='Find my skills';
+$('accomplishment').readOnly=false;
+$('discovery-progress').hidden=true;
+$('discovery-progress').setAttribute('aria-busy','false');
+}
 };
 
 render();
