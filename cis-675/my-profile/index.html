@@ -150,7 +150,7 @@ button:disabled{cursor:wait;opacity:.65}
 width:fit-content;max-width:100%;border-radius:3px;
 background-image:linear-gradient(100deg,transparent 0%,transparent 18%,#dceaff 38%,#e9f2ff 63%,transparent 83%,transparent 100%);
 background-size:280% 100%;background-repeat:no-repeat;
-animation:skill-found-sweep 1250ms ease-out both;
+animation:skill-found-sweep 2100ms ease-out both;
 }
 @keyframes skill-found-sweep{
 0%{background-position:140% 0;box-shadow:0 0 0 0 transparent}
@@ -335,7 +335,7 @@ $('skill-results').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:
 if(reviewCount&&!matchMedia('(prefers-reduced-motion: reduce)').matches){
 const titles=[...$('suggestions').querySelectorAll('.skill h3')].slice(0,reviewCount);
 titles.forEach((title,index)=>{
-title.style.animationDelay=(350+index*120)+'ms';
+title.style.animationDelay=(350+index*220)+'ms';
 title.classList.add('skill-found-highlight');
 title.addEventListener('animationend',()=>{title.classList.remove('skill-found-highlight');title.style.animationDelay='';},{once:true});
 });
