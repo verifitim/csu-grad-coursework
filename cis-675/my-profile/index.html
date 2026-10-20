@@ -179,7 +179,7 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 </style>
 </head>
 <body>
-<header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/">My Profile</option></select></div></nav></header>
+<header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/?nav=3" selected>My Profile</option><option value="../job-search/?nav=3">Job Search</option></select></div></nav></header>
 <main>
 <div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div></div>
 
@@ -226,8 +226,8 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 'use strict';
 // Add each new persona page to this navigation map on both pages.
 const personaPages={
-'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=2'}],
-'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=2'}]
+'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=3'},{label:'Job Search',href:'../job-search/?nav=3'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=3'}]
 };
 const personaSelect=document.getElementById('persona');
 const pageSelect=document.getElementById('page-navigation');
@@ -235,6 +235,7 @@ function populatePages(role){
 pageSelect.replaceChildren();
 for(const page of personaPages[role]||[]){
 const option=document.createElement('option');option.value=page.href;option.textContent=page.label;
+option.selected=new URL(page.href,window.location.href).pathname===window.location.pathname;
 pageSelect.append(option);
 }
 }
