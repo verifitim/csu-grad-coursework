@@ -162,10 +162,10 @@ function render(){
 $('summary-name').textContent=state.profile.name;
 $('summary-headline').textContent=state.profile.headline;
 $('summary-location').textContent=state.profile.location;
-$('qualification-text').textContent=(state.qualifications||'Front Range Community College · Business coursework, 2021–2022\nWorkplace Safety Certificate · 2023').replace(/ \\(fictional\\)/g,'');
+$('qualification-text').textContent=(state.qualifications||'Front Range Community College · Business coursework, 2021–2022\nWorkplace Safety Certificate · 2023').replaceAll(' (fictional)','');
 for(const field of ['name','location','headline','about'])$(field).value=state.profile[field]||'';
 $('experiences').replaceChildren();
-state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org.replace(/ \\(fictional\\)/g,'')+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
+state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org.replaceAll(' (fictional)','')+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
 $('suggestions').replaceChildren();$('confirmed').replaceChildren();
 state.skills.forEach((skill,i)=>{
 if(skill.state==='dismissed')return;
