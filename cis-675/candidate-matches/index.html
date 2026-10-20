@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Candidate Matches · Team 4</title><style>
+:root{--ink:#181b20;--muted:#687382;--line:#e0e5eb;--blue:#2459db}*{box-sizing:border-box}body{margin:0;background:#fff;color:var(--ink);font:14px/1.65 ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}header{max-width:1000px;margin:auto;padding:22px 40px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}.brand{font-size:21px;font-weight:750;letter-spacing:-.7px}header small{color:var(--muted)}main{max-width:820px;margin:44px auto;padding:0 40px}h1{font-size:38px;line-height:1.2;letter-spacing:-1.4px;font-weight:650;margin:10px 0}h2{font-size:22px;letter-spacing:-.6px;margin:0;font-weight:650}h3{font-size:16px;margin:0;font-weight:650}p{margin:8px 0 20px}.muted,small{color:var(--muted)}.eyebrow{font-size:10px;letter-spacing:.13em;font-weight:650;display:block;color:var(--muted);margin-bottom:9px}.intro{margin-bottom:32px}.intro .muted{max-width:58ch}.section{padding:28px 0;border-top:1px solid var(--line)}.section>p{color:var(--muted);font-size:13px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}label{display:block;font-size:12px;font-weight:600;margin:16px 0 6px}input,textarea,select{width:100%;padding:10px 11px;border:1px solid #d6dde6;border-radius:5px;background:#fff;font:inherit;color:var(--ink)}textarea{resize:vertical;min-height:110px}button{font:600 12px/1.5 ui-sans-serif,system-ui;cursor:pointer;background:#fff;border:1px solid #d6dde6;border-radius:5px;padding:9px 13px;color:#414b59}button:hover{background:#f3f6fa}button.primary{background:var(--ink);border-color:var(--ink);color:#fff}button.primary:hover{background:#343b46}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible{outline:2px solid var(--blue);outline-offset:3px}.row{display:flex;align-items:center;justify-content:space-between;gap:14px}.bucket{border:1px solid var(--line);border-radius:7px;padding:22px;margin:20px 0}.bucket>p{font-size:12px;color:var(--muted);margin:6px 0 18px}.criterion{padding:16px 0;border-top:1px solid var(--line)}.criterion p{font-size:12px;color:var(--muted);margin:5px 0}.criterion small{font-size:10px;text-transform:uppercase;letter-spacing:.06em}.criterion .actions{margin-top:9px}.actions{display:flex;flex-wrap:wrap;gap:8px}.criterion button{padding:4px 8px;font-size:11px}.count{font-size:11px;color:var(--muted);margin-left:7px;font-weight:400}.empty{font-size:13px;color:var(--muted)}fieldset{padding:0;border:0;margin:20px 0}legend{font-size:12px;font-weight:600;margin-bottom:10px}.choice{display:block;border:1px solid var(--line);border-radius:6px;padding:16px;margin:10px 0;cursor:pointer;font-weight:400}.choice:has(input:checked){border-color:#8ca9e8;background:#f6f8fe}.choice input{width:auto;margin:0 9px 0 0;accent-color:var(--blue)}.choice strong{font-size:13px}.choice small{display:block;padding-left:25px;margin-top:4px;font-weight:400;font-size:12px}.explanation{padding:14px 16px;background:#f6f8fb;border-left:2px solid #aabfe9;border-radius:3px;font-size:12px;color:#4e6078}.footer-actions{display:flex;justify-content:space-between;align-items:center;gap:20px;border-top:1px solid var(--line);padding:24px 0}.footer-actions small{font-size:11px}.status{font-size:12px;color:#2d674d;min-height:24px}.status:empty{display:none}.status:not(:empty){padding:12px 0}dialog{width:min(640px,92vw);max-height:88vh;overflow:auto;border:1px solid var(--line);border-radius:9px;padding:28px;box-shadow:0 20px 80px #10182825}dialog::backdrop{background:#18233560}dialog .actions{margin-top:20px}.preview-block{padding:18px 0;border-top:1px solid var(--line);margin-top:18px}.preview-block p{white-space:pre-wrap;font-size:13px}.preview-block ul{padding-left:20px;font-size:13px}.badge{font-size:11px;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:3px 8px}.field-note{font-size:11px;color:var(--muted);margin-top:6px}footer{font-size:10px;color:var(--muted);padding-bottom:26px}@media(max-width:600px){header{padding:18px 20px}main{padding:0 20px;margin-top:30px}.grid{grid-template-columns:1fr;gap:0}h1{font-size:32px}.bucket{padding:17px}.row{flex-wrap:wrap}.footer-actions{align-items:flex-start;flex-direction:column}}
+
+.persona-chooser{display:flex;align-items:center;gap:10px}
+.persona-chooser label{margin:0;font-size:11px;font-weight:500;color:var(--muted)}
+.persona-chooser select{width:auto;min-width:145px;padding:7px 28px 7px 10px;font:500 12px/1.5 ui-sans-serif,system-ui;color:var(--ink);border:1px solid var(--line);border-radius:5px;background-color:#fff;cursor:pointer}
+@media(max-width:480px){.persona-chooser{gap:6px}.persona-chooser label{font-size:10px}.persona-chooser select{min-width:130px;font-size:11px}}
+
+.role-navigation{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.page-chooser{display:flex;align-items:center;gap:10px}
+.page-chooser label{margin:0;font-size:11px;font-weight:500;color:var(--muted)}
+.page-chooser select{width:auto;min-width:130px;padding:7px 28px 7px 10px;font:500 12px/1.5 ui-sans-serif,system-ui;color:var(--ink);border:1px solid var(--line);border-radius:5px;background-color:white;cursor:pointer}
+@media(max-width:650px){header{align-items:flex-start;gap:16px}.role-navigation{flex-direction:column;align-items:flex-end;gap:8px}.persona-chooser,.page-chooser{gap:8px}.persona-chooser select,.page-chooser select{width:145px;font-size:11px;min-width:0}.persona-chooser label,.page-chooser label{font-size:11px}}
+header{height:auto;min-height:76px}@media(max-width:650px){header{min-height:65px}}
+/* Both persona home pages always expose the same role and page controls. */
+header .role-navigation{display:flex;visibility:visible}
+header .page-chooser{display:flex;visibility:visible}
+header #page-navigation{display:block;visibility:visible;min-width:145px}
+@media(max-width:650px){header .role-navigation{flex-direction:column;align-items:flex-end}header #page-navigation{width:145px}}
+
+.job-context{border:1px solid var(--line);border-radius:7px;padding:23px;margin:28px 0}
+.job-context label{margin-top:0}.job-meta{font-size:12px;color:var(--muted);margin:10px 0 16px}
+.job-context .explanation{margin-top:17px}.job-context a{font-size:12px;color:var(--blue);text-underline-offset:3px}
+.criteria-summary{margin:18px 0 0;border-top:1px solid var(--line);padding-top:14px}
+.criteria-summary summary{font-size:12px;font-weight:600;cursor:pointer}.criteria-summary ul{font-size:12px;padding-left:18px;color:#5c6878}
+.results-bar{padding:8px 0 22px}.results-bar label{margin:0;font-size:11px}.results-bar select{width:auto;font-size:12px;padding:7px 28px 7px 10px}
+.results-bar h2{font-size:20px}.results-bar small{display:block;font-size:11px;margin-top:4px}
+.candidate{border-top:1px solid var(--line);padding:26px 0}.candidate h3{font-size:22px;letter-spacing:-.5px}.candidate .background{font-size:12px;color:var(--muted);margin:5px 0 15px}
+.path-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#647a97;margin-bottom:7px}
+.match-story{background:#f7f9fc;border-radius:5px;padding:16px;margin:14px 0;font-size:13px;color:#485c74}.match-story strong{display:block;color:#273e58;font-size:12px;margin-bottom:5px}
+.evidence-preview{margin:15px 0;font-size:12px}.evidence-preview p{margin:5px 0}.signal{display:inline-block;font-size:11px;border-radius:4px;padding:3px 8px;background:#f0f3f7;color:#536477;margin-right:6px}.signal.good{background:#edf5ef;color:#316048}.signal.review{background:#fbf4e7;color:#826534}
+.candidate .actions{margin-top:17px}.candidate .actions button[aria-pressed="true"]{background:#edf5ef;color:#316048;border-color:#c8dccf}
+.no-results{font-size:13px;color:var(--muted);padding:25px 0}
+.detail-section{margin-top:24px;padding-top:20px;border-top:1px solid var(--line)}
+.detail-section p{font-size:13px}.qualification-row{border-top:1px solid var(--line);padding:15px 0}.qualification-row:first-of-type{border:0}.qualification-row h3{font-size:13px;margin:7px 0}.qualification-row p{font-size:12px;margin:5px 0;color:#5a6675}
+#match-status{position:sticky;top:0;background:white;z-index:2}
+@media(max-width:600px){.job-context{padding:18px}.results-bar{align-items:flex-start}.candidate h3{font-size:21px}}
+</style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker">Job seeker</option><option value="hiring-manager" selected>Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../job-posting/?nav=4">Job Posting</option><option value="../candidate-matches/?nav=4" selected>Candidate Matches</option></select></div></nav></header><main>
+<div class="intro"><small class="eyebrow">CANDIDATE MATCHES</small><h1>See the fit behind the background.</h1><p class="muted">Review candidates against your job’s qualifications, including relevant abilities that a degree or job title may not reveal.</p></div>
+<section class="job-context" aria-labelledby="job-label"><label id="job-label" for="selected-job">Which job are you filling?</label><select id="selected-job"></select><p class="job-meta" id="job-meta"></p><a href="../job-posting/?nav=4">Edit job posting & qualifications</a><div id="approach-description" class="explanation"></div><details class="criteria-summary"><summary id="criteria-summary-label">Review job qualifications</summary><div id="criteria-summary"></div></details></section>
+<div class="row results-bar"><div><h2>Candidates to consider</h2><small id="candidate-count" role="status" aria-live="polite"></small></div><div><label for="candidate-filter">Show</label><select id="candidate-filter"><option value="all">All candidates</option><option value="shortlisted">Shortlisted candidates</option></select></div></div>
+<div id="match-status" class="status" role="status" aria-live="polite"></div>
+<div id="candidate-results"></div>
+<p class="field-note">Evidence indicates a possible fit, not a verified qualification. Review required criteria and outstanding questions before making a decision.</p>
+<footer style="margin-top:30px">Team 4</footer></main>
+<dialog id="candidate-detail" aria-labelledby="detail-heading"><small class="eyebrow">CANDIDATE REVIEW</small><h2 id="detail-heading"></h2><div id="detail-content"></div><div class="actions"><button id="close-detail" type="button">Back to candidates</button></div></dialog>
+<script>
+'use strict';
+// Add each new persona page to this navigation map on both pages.
+const personaPages={
+'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=4'},{label:'Job Search',href:'../job-search/?nav=4'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=4'},{label:'Candidate Matches',href:'../candidate-matches/?nav=4'}]
+};
+const personaSelect=document.getElementById('persona');
+const pageSelect=document.getElementById('page-navigation');
+function populatePages(role){
+pageSelect.replaceChildren();
+for(const page of personaPages[role]||[]){
+const option=document.createElement('option');option.value=page.href;option.textContent=page.label;
+option.selected=new URL(page.href,window.location.href).pathname===window.location.pathname;
+pageSelect.append(option);
+}
+}
+populatePages(personaSelect.value);
+personaSelect.addEventListener('change',event=>{
+const pages=personaPages[event.target.value];
+populatePages(event.target.value);
+if(pages&&pages.length)window.location.assign(pages[0].href);
+});
+pageSelect.addEventListener('change',event=>{
+const pages=personaPages[personaSelect.value]||[];
+if(pages.some(page=>page.href===event.target.value))window.location.assign(event.target.value);
+});
+// Restore the page's actual role if the browser restores select values on Back.
+window.addEventListener('pageshow',()=>{
+personaSelect.value='hiring-manager';
+populatePages(personaSelect.value);
+});
+
+const $=id=>document.getElementById(id);
+function node(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
+const operations={title:'Operations Coordinator',company:'Juniper Supply Co.',location:'Fort Collins, CO',arrangement:'Hybrid',evaluation:'both',criteria:[
+{name:'Coordinate schedules and changing priorities',type:'Skill',level:'required',context:'Organize people, tasks, or coverage in work, a project, or a volunteer role.'},
+{name:'Communicate clearly with customers and colleagues',type:'Skill',level:'required',context:'Explain a process, handle a concern, or keep a team informed.'},
+{name:'Use spreadsheets to track work',type:'Skill',level:'required',context:'Track orders, inventory, schedules, or project progress.'},
+{name:'Business coursework or equivalent practical experience',type:'Education',level:'preferred',context:'Relevant coursework or experience organizing business operations.'},
+{name:'Experience improving an operational workflow',type:'Experience',level:'preferred',context:'Describe a process improvement and its outcome.'}
+]};
+const training={title:'Training Coordinator',company:'Juniper Supply Co.',location:'Fort Collins, CO',arrangement:'Hybrid',evaluation:'both',criteria:[
+{name:'Train colleagues on procedures',type:'Skill',level:'required',context:'Explain a process and help others put it into practice.'},
+{name:'Coordinate schedules and changing priorities',type:'Skill',level:'required',context:'Organize training sessions and adapt schedules.'},
+{name:'Communicate clearly with customers and colleagues',type:'Skill',level:'required',context:'Explain unfamiliar information and respond to questions.'},
+{name:'Use spreadsheets to track work',type:'Skill',level:'preferred',context:'Maintain attendance or progress records.'}
+]};
+let activePosting=structuredClone(operations);
+try{const saved=JSON.parse(localStorage.getItem('team4-us14-job-posting-v1'));if(saved&&saved.title&&Array.isArray(saved.criteria))activePosting=saved;}catch(e){}
+const postings=[activePosting,training];
+postings.forEach((job,index)=>{const option=node('option',job.title+' · '+job.company);option.value=index;$('selected-job').append(option);});
+const candidates=[
+{id:'jamie',name:'Jamie Chen',title:'Operations Specialist',company:'Aspen Distribution',location:'Denver, CO',label:'Direct operations experience',education:'B.S. Business Administration · Western Plains University',experience:'Four years coordinating order fulfillment and inventory reporting.',
+evidence:{coordination:'Coordinated weekly coverage for an 18-person fulfillment team.',communication:'Worked with customer service to resolve delayed orders and provide status updates.',tracking:'Maintained Excel inventory reports and order trackers.',education:'B.S. Business Administration and four years in distribution operations.',improvement:'Redesigned a handoff checklist that reduced repeat order corrections.',training:null}},
+{id:'alex',name:'Alex Morgan',title:'Retail Shift Lead & Volunteer Organizer',company:'Pine Market / Northside Community Pantry',location:'Fort Collins, CO',label:'Transferable experience across roles',education:'Business coursework · Front Range Community College',experience:'Three years organizing shifts, supporting colleagues, and coordinating community events.',
+evidence:{coordination:'Scheduled shifts for 12 coworkers and arranged last-minute coverage.',communication:'Resolved customer concerns and kept colleagues informed during shift changes.',tracking:'Built a spreadsheet tracker that reduced missed orders by 25%.',education:'Business coursework plus practical scheduling and order-management experience.',improvement:'Introduced an order tracker and reduced missed orders by 25%.',training:'Trained four new colleagues on order and inventory procedures.'}},
+{id:'riley',name:'Riley Patel',title:'Customer Support Trainer',company:'Meadow Services',location:'Lakewood, CO',label:'Strength in communication and training',education:'Customer Service Professional Certificate',experience:'Five years supporting customers and teaching new colleagues service procedures.',
+evidence:{coordination:null,communication:'Handled escalated customer questions and wrote clear follow-up instructions.',tracking:null,education:null,improvement:'Updated support instructions to reduce repeated questions.',training:'Led onboarding sessions for six new support colleagues.'}}
+];
+let shortlist={};try{shortlist=JSON.parse(localStorage.getItem('team4-candidate-shortlists'))||{};}catch(e){}
+function currentJob(){return postings[Number($('selected-job').value)||0];}
+function jobKey(){return currentJob().company+'::'+currentJob().title;}
+function selectedIds(){return shortlist[jobKey()]||[];}
+function evidenceFor(candidate,criterion){
+const text=criterion.name.toLowerCase();
+let key=null;
+if(/train|onboard|teach/.test(text))key='training';
+else if(/schedul|priorit|coordinat/.test(text))key='coordination';
+else if(/communicat|customer/.test(text))key='communication';
+else if(/spreadsheet|excel|track work/.test(text))key='tracking';
+else if(/coursework|business.*degree|equivalent practical/.test(text))key='education';
+else if(/improv|workflow/.test(text))key='improvement';
+return key?candidate.evidence[key]:null;
+}
+function jobSummary(){
+const job=currentJob();$('job-meta').textContent=job.location+' · '+job.arrangement;
+const descriptions={traditional:'Traditional qualifications: consider reported education, credentials, and work history against your criteria.',skills:'Skills & transferable experience: consider demonstrated abilities across roles and industries.',both:'Qualifications + transferable skills: consider conventional qualifications alongside abilities that may be overlooked.'};
+$('approach-description').textContent=descriptions[job.evaluation]||descriptions.both;
+const required=job.criteria.filter(c=>c.level==='required').length;
+$('criteria-summary-label').textContent='Review '+required+' required and '+(job.criteria.length-required)+' preferred qualifications';
+$('criteria-summary').replaceChildren();
+for(const level of ['required','preferred']){const title=node('h3',level==='required'?'Required':'Preferred');const list=node('ul');job.criteria.filter(c=>c.level===level).forEach(c=>list.append(node('li',c.name)));$('criteria-summary').append(title,list);}
+}
+function story(candidate){
+const job=currentJob();
+const supported=job.criteria.filter(c=>evidenceFor(candidate,c));
+if(!supported.length)return 'Review this candidate’s background against your criteria. More information is needed to explain a fit for this posting.';
+if(job.title===training.title){return candidate.id==='alex'?'Retail onboarding and shift planning may transfer to organizing training sessions and helping colleagues learn new procedures.':candidate.id==='riley'?'Customer support training is relevant to explaining procedures and supporting new colleagues. Scheduling experience still needs review.':'Operations scheduling may transfer to coordinating training activities. Evidence of delivering training still needs review.';}
+if(candidate.id==='alex')return 'A retail title can hide relevant operations abilities. Scheduling coverage and improving order tracking connect to coordination and workflow improvement.';
+if(candidate.id==='jamie')return 'An operations background and business education provide familiar evidence to review against this role’s qualifications.';
+return 'Customer support and training experience may transfer to clear communication and helping teams follow processes. Review the remaining operational requirements.';
+}
+function toggleShortlist(id){
+let ids=selectedIds();const adding=!ids.includes(id);shortlist[jobKey()]=adding?[...ids,id]:ids.filter(x=>x!==id);
+try{localStorage.setItem('team4-candidate-shortlists',JSON.stringify(shortlist));}catch(e){}
+render();$('match-status').textContent=adding?'Candidate added to this job’s shortlist.':'Candidate removed from this job’s shortlist.';
+}
+function render(){
+jobSummary();let visible=$('candidate-filter').value==='shortlisted'?candidates.filter(c=>selectedIds().includes(c.id)):candidates;
+$('candidate-count').textContent=visible.length+' candidates · '+selectedIds().length+' shortlisted for this job';
+$('candidate-results').replaceChildren();
+for(const candidate of visible){
+const card=node('article',undefined,'candidate');card.append(node('div',candidate.label,'path-label'),node('h3',candidate.name),node('p',candidate.title+' · '+candidate.company+' · '+candidate.location,'background'));
+const why=node('div',undefined,'match-story');why.append(node('strong','Why consider this candidate?'),node('span',story(candidate)));card.append(why);
+const required=currentJob().criteria.filter(c=>c.level==='required');
+const supported=required.filter(c=>evidenceFor(candidate,c)).length;
+const preview=node('div',undefined,'evidence-preview');preview.append(node('span',supported+' of '+required.length+' required criteria have supporting evidence','signal good'));
+if(supported<required.length)preview.append(node('span',(required.length-supported)+' need review','signal review'));
+const first=required.find(c=>evidenceFor(candidate,c));if(first)preview.append(node('p',evidenceFor(candidate,first)));card.append(preview);
+const actions=node('div',undefined,'actions');const review=node('button','Review candidate');review.className='primary';review.onclick=()=>showCandidate(candidate);const shortlistButton=node('button',selectedIds().includes(candidate.id)?'Shortlisted':'Add to shortlist');shortlistButton.setAttribute('aria-pressed',String(selectedIds().includes(candidate.id)));shortlistButton.onclick=()=>toggleShortlist(candidate.id);actions.append(review,shortlistButton);card.append(actions);$('candidate-results').append(card);
+}
+if(!visible.length)$('candidate-results').append(node('p','No candidates shortlisted for this job yet. Choose All candidates to review potential matches.','no-results'));
+}
+function showCandidate(candidate){
+$('detail-heading').textContent=candidate.name;const content=$('detail-content');content.replaceChildren(node('p',candidate.title+' · '+candidate.company),node('p',candidate.experience),node('p',candidate.education));
+const why=node('div',undefined,'match-story');why.append(node('strong','Connection to '+currentJob().title),node('span',story(candidate)));content.append(why);
+for(const level of ['required','preferred']){
+const section=node('div',undefined,'detail-section');section.append(node('h3',level==='required'?'Required qualifications':'Preferred qualifications'));
+const criteria=currentJob().criteria.filter(c=>c.level===level);
+if(!criteria.length)section.append(node('p','None specified for this job.'));
+for(const criterion of criteria){const evidence=evidenceFor(candidate,criterion);const row=node('div',undefined,'qualification-row');row.append(node('span',evidence?'Supporting evidence':'Needs review','signal '+(evidence?'good':'review')),node('h3',criterion.name),node('p',evidence||'No supporting information is available in this profile. Clarify with the candidate before deciding.'));
+if(criterion.context)row.append(node('p','What you are looking for: '+criterion.context));section.append(row);}content.append(section);
+}
+$('candidate-detail').showModal();
+}
+$('selected-job').onchange=()=>{$('match-status').textContent='';render();};
+$('candidate-filter').onchange=render;
+$('close-detail').onclick=()=>$('candidate-detail').close();
+render();
+</script></body></html>
