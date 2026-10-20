@@ -9,7 +9,7 @@ The product interface intentionally presents the proposed finished experience. A
 - Editable profile, work experience, education, and certifications.
 - Resume attachment interaction within the profile section. The prototype validates extension and size and remembers only the filename; no document bytes are uploaded, stored, parsed, or shared with employers.
 - Suggested skills with supporting experience, transfer context where available, and confirm/edit/dismiss controls.
-- An accomplishment input that illustrates discovery through a small set of keyword rules. It is not a real skill assessment or general-purpose language model.
+- An accomplishment input with a staged two-second discovery interaction and three fixed suggestions grounded in the fictional candidate’s existing experience. Input text does not drive analysis; this illustrates the appearance of discovery rather than implementing it.
 - Manual skill entry and candidate review.
 
 ## Outside this version
@@ -18,4 +18,4 @@ Automatic resume parsing and profile population, employer evaluation configurati
 
 ## Validation
 
-JavaScript syntax and referenced element IDs were checked. A browser execution environment was unavailable for visual or end-to-end testing.
+JavaScript syntax, referenced element IDs, and the staged discovery state transitions were checked with a DOM stand-in. A browser execution environment was unavailable for visual or end-to-end testing.
