@@ -100,15 +100,23 @@ footer{padding-top:0}
 .intro h1{font-size:38px;max-width:17ch}.intro{align-items:flex-start}.intro>button{margin-top:12px;white-space:nowrap}
 .profile-flow .skill-guidance{font-size:11px;margin-top:-8px;color:#72777f}
 @media(max-width:650px){.intro h1{font-size:32px}.intro p{font-size:13px}.intro{flex-direction:column}.intro>button{margin-top:0}.discovery h2{font-size:23px}.profile-summary{align-items:flex-start}.profile-summary button{white-space:nowrap}.row{flex-wrap:wrap}}
+
+.account-label{font-size:12px;color:var(--muted)}
+.profile-overview{margin-top:8px}
+.profile-overview .profile-summary{margin-bottom:20px;padding-top:16px;border-bottom:0}
+.profile-overview>.card:last-child{margin-bottom:30px;padding-bottom:28px}
+.profile-overview .upload p{display:block;margin:10px 0;font-size:12px}
+.profile-overview #profile-details .grid{display:block}
+.profile-overview #profile-details>p{font-size:13px}
 </style>
 </head>
 <body>
-<header><div class="brand">Team 4</div><span class="demo">CIS 675 · Fictional prototype</span></header>
+<header><div class="brand">Team 4</div><span class="account-label">Job seeker</span></header>
 <main>
-<div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div><button id="reset">Reset demo</button></div>
-<div class="notice">Fictional demo · Changes stay in this browser · Skill discovery and resume selection are simulations.</div>
+<div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div></div>
+
 <div id="status" class="status" role="status" aria-live="polite"></div>
-<section class="profile-summary" aria-label="Profile summary"><div><h2 id="summary-name"></h2><p id="summary-headline"></p><small id="summary-location"></small></div><button id="edit-profile-toggle" aria-expanded="false" aria-controls="profile-details">Edit profile</button></section>
+<div class="profile-overview" aria-label="Your profile"><section class="profile-summary" aria-label="Profile summary"><div><h2 id="summary-name"></h2><p id="summary-headline"></p><small id="summary-location"></small></div><button id="edit-profile-toggle" aria-expanded="false" aria-controls="profile-details">Edit profile</button></section>
 <section class="card" id="profile-details" aria-labelledby="profile-heading" hidden>
 <h2 id="profile-heading">Profile details</h2><p class="muted">Introduce yourself and the work you want to do.</p>
 <form id="profile-form">
@@ -117,21 +125,22 @@ footer{padding-top:0}
 <label for="about">About you</label><textarea id="about" maxlength="2000"></textarea>
 <div class="actions"><button class="primary" type="submit">Save profile</button></div>
 </form></section>
+<section class="card"><h2>Resume</h2><p class="muted">Keep your current resume with your profile so employers can review your background.</p><div class="upload"><label for="resume">Upload or replace resume <span class="field-hint">PDF or DOCX · Up to 5 MB</span></label><input type="file" id="resume" accept=".pdf,.docx"><p id="resume-name"></p><button id="remove-resume" hidden>Remove resume</button></div></section></div>
 <div class="profile-flow">
 <section class="card discovery" aria-labelledby="discovery-heading"><small class="eyebrow">01 / START WITH SOMETHING YOU DID</small><h2 id="discovery-heading">There may be more to your experience than you think.</h2><p class="muted">Describe a task, accomplishment, or problem you solved. Paid work, volunteering, school projects, and everyday responsibilities all count.</p>
 <label for="accomplishment">What did you do, and what changed because of it?</label><textarea id="accomplishment" maxlength="2000">I scheduled shifts for 12 coworkers and handled last-minute coverage. I also trained four new colleagues on our order and inventory procedures.</textarea>
-<div class="actions"><button class="primary" id="discover-skills">Find skills in this example</button><button id="use-tracker-example">Try an order-tracking example</button></div>
-<p class="simulation-note">Demo: simple keyword rules illustrate the experience-to-skill connection. This is not an assessment or AI analysis. Existing suggestions below are fictional examples.</p>
+<div class="actions"><button class="primary" id="discover-skills">Find my skills</button></div>
+
 </section>
 <div class="section-intro"><small class="eyebrow">02 / RECOGNIZE YOUR TRANSFERABLE ABILITIES</small></div>
 <section class="card"><div class="row"><h2>What your experience could show</h2><span class="count" id="pending-count"></span></div><p class="muted">Your job title tells part of the story. These suggestions connect what you did to abilities that can matter in other roles.</p><p class="skill-guidance">Confirming a skill means you believe it represents your abilities. Candidate-confirmed skills are not independently verified.</p><div id="suggestions"></div><button id="restore" hidden>Restore dismissed suggestions</button></section>
 <section class="card"><div class="row"><h2>Skills you stand behind</h2><button id="add-skill">+ Add skill</button></div><p class="muted">Review your confirmed skills or add another skill with supporting experience.</p><div id="confirmed"></div></section>
-<div class="section-intro"><small class="eyebrow">03 / COMPLETE THE PICTURE</small><h2>Your experience and qualifications</h2><p class="muted">Skills add context to your background. Keep your work history, education, credentials, and resume alongside them.</p></div>
+<div class="section-intro"><small class="eyebrow">03 / COMPLETE THE PICTURE</small><h2>Your experience and qualifications</h2><p class="muted">Skills add context to your background. Keep your work history, education, and credentials up to date.</p></div>
 <section class="card"><div class="row"><h2>Experience</h2><button id="add-experience">+ Add experience</button></div><p class="muted">Work, projects, volunteering, and accomplishments.</p><div id="experiences"></div></section>
-<section class="card"><div class="row"><h2>Education & certifications</h2><button id="edit-qualifications">Edit qualifications</button></div><p class="qualification-text" id="qualification-text"></p><small>Self-reported information · No independent verification in this demo.</small></section>
-<section class="card"><h2>Resume</h2><p class="muted">Select a sample resume to demonstrate adding a document to your profile.</p><div class="upload"><label for="resume">Choose resume file <span class="field-hint">PDF or DOCX · Up to 5 MB</span></label><input type="file" id="resume" accept=".pdf,.docx"><p id="resume-name"></p><button id="remove-resume" hidden>Remove resume</button></div><p><small>Only the file name is remembered. Suggestions below are scripted examples and do not come from your file.</small></p></section>
+<section class="card"><div class="row"><h2>Education & certifications</h2><button id="edit-qualifications">Edit qualifications</button></div><p class="qualification-text" id="qualification-text"></p><small>Self-reported qualifications</small></section>
+
 </div>
-<footer>Team 4 · CIS 675 · US2: Show Skills Beyond Degrees · US7: Profile and Experience</footer>
+<footer>Team 4</footer>
 </main>
 <dialog id="editor"><form id="edit-form"><h2 id="editor-title"></h2><div id="editor-fields"></div><div class="actions"><button class="primary" type="submit">Save changes</button><button type="button" id="cancel">Cancel</button></div></form></dialog>
 <script>
@@ -139,24 +148,24 @@ footer{padding-top:0}
 const key='cis675-skillbridge-profile-v1';
 const initial={
 profile:{name:'Alex Morgan',location:'Fort Collins, CO',headline:'Operations coordinator | Turning everyday work into better systems',about:'I help busy teams stay organized, solve customer problems, and improve how work gets done. I am exploring opportunities where I can bring my coordination and problem-solving skills.'},
-experiences:[{title:'Operations Coordinator',org:'Juniper Supply Co. (fictional)',dates:'2023 – Present',detail:'Coordinated weekly schedules for 12 team members. Built a spreadsheet tracker that reduced missed orders by 25%. Trained four new colleagues on order and inventory procedures.'},{title:'Volunteer Event Organizer',org:'Northside Community Pantry (fictional)',dates:'2022 – 2023',detail:'Organized monthly donation events, coordinated volunteers, and worked with local partners to serve 80 households.'}],
+experiences:[{title:'Operations Coordinator',org:'Juniper Supply Co.',dates:'2023 – Present',detail:'Coordinated weekly schedules for 12 team members. Built a spreadsheet tracker that reduced missed orders by 25%. Trained four new colleagues on order and inventory procedures.'},{title:'Volunteer Event Organizer',org:'Northside Community Pantry',dates:'2022 – 2023',detail:'Organized monthly donation events, coordinated volunteers, and worked with local partners to serve 80 households.'}],
 skills:[{name:'Process improvement',context:'Your order-tracking accomplishment suggests you can identify bottlenecks and improve a workflow.',evidence:'Operations Coordinator · Built a spreadsheet tracker that reduced missed orders by 25%.',state:'suggested'},{name:'Team coordination',context:'Scheduling and volunteer work can demonstrate coordination even without a management title.',evidence:'Operations Coordinator · Coordinated weekly schedules for 12 team members.',state:'suggested'},{name:'Training and onboarding',context:'Helping new colleagues learn procedures can demonstrate teaching and communication skills.',evidence:'Operations Coordinator · Trained four new colleagues on order and inventory procedures.',state:'suggested'},{name:'Event planning',context:'Added by candidate.',evidence:'Volunteer Event Organizer · Organized monthly donation events.',state:'confirmed'}],resume:''};
 let state=structuredClone(initial);
 try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&saved.profile&&Array.isArray(saved.skills)&&Array.isArray(saved.experiences))state=saved;}catch(e){}
 const $=id=>document.getElementById(id);
 function say(message){$('status').textContent=message;}
-function persist(){try{localStorage.setItem(key,JSON.stringify(state));return true;}catch(e){say('Browser storage is unavailable. Changes will last only while this page is open.');return false;}}
-function save(message){if(persist())say(message+' Saved in this browser.');render();}
+function persist(){try{localStorage.setItem(key,JSON.stringify(state));return true;}catch(e){say('Changes could not be saved. Please try again.');return false;}}
+function save(message){if(persist())say(message);render();}
 function node(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
 function button(text,fn){const el=node('button',text);el.type='button';el.addEventListener('click',fn);return el;}
 function render(){
 $('summary-name').textContent=state.profile.name;
 $('summary-headline').textContent=state.profile.headline;
 $('summary-location').textContent=state.profile.location;
-$('qualification-text').textContent=state.qualifications||'Front Range Community College · Business coursework, 2021–2022 (fictional)\nWorkplace Safety Certificate · 2023 (fictional)';
+$('qualification-text').textContent=(state.qualifications||'Front Range Community College · Business coursework, 2021–2022\nWorkplace Safety Certificate · 2023').replace(/ \\(fictional\\)/g,'');
 for(const field of ['name','location','headline','about'])$(field).value=state.profile[field]||'';
 $('experiences').replaceChildren();
-state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
+state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org.replace(/ \\(fictional\\)/g,'')+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
 $('suggestions').replaceChildren();$('confirmed').replaceChildren();
 state.skills.forEach((skill,i)=>{
 if(skill.state==='dismissed')return;
@@ -175,7 +184,7 @@ $('pending-count').textContent=pending+' to review';
 if(!pending)$('suggestions').append(node('p','All suggestions reviewed. Your confirmed skills appear below.','muted'));
 if(!state.skills.some(s=>s.state==='confirmed'))$('confirmed').append(node('p','Confirm a suggestion or add a skill to get started.','muted'));
 $('restore').hidden=!state.skills.some(s=>s.state==='dismissed');
-$('resume-name').textContent=state.resume?'Selected (simulation): '+state.resume:'No resume selected.';
+$('resume-name').textContent=state.resume?'Current resume: '+state.resume:'No resume added yet.';
 $('remove-resume').hidden=!state.resume;
 }
 let onSave;
@@ -201,18 +210,16 @@ openEditor(index===undefined?'Add your skill':'Edit skill',[
 ],values=>{if(index===undefined)state.skills.push({...values,state:'confirmed',context:'Added by candidate.'});else Object.assign(state.skills[index],values);save('Skill updated.' );});
 }
 $('profile-form').addEventListener('submit',event=>{event.preventDefault();for(const field of ['name','location','headline','about'])state.profile[field]=$(field).value.trim();save('Profile updated.');});
-$('edit-form').addEventListener('submit',event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.target));for(const k in values)values[k]=values[k].trim();if(!values.name&&!values.title){say('Please enter a name.');return;}onSave(values);$('editor').close();});
+$('edit-form').addEventListener('submit',event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.target));for(const k in values)values[k]=values[k].trim();if(Object.values(values).every(value=>!value)){say('Please enter the required details.');return;}onSave(values);$('editor').close();});
 $('cancel').onclick=()=>$('editor').close();
 $('add-experience').onclick=()=>editExperience();
 $('add-skill').onclick=()=>editSkill();
 $('restore').onclick=()=>{state.skills.forEach(s=>{if(s.state==='dismissed')s.state='suggested';});save('Dismissed skills restored for review.');};
-$('resume').onchange=event=>{const file=event.target.files[0];if(!file)return;if(!/\.(pdf|docx)$/i.test(file.name)||file.size>5*1024*1024){say('Select a PDF or DOCX smaller than 5 MB.');event.target.value='';return;}state.resume=file.name;save('Resume selection simulated. No file contents were read or uploaded.');event.target.value='';};
-$('remove-resume').onclick=()=>{state.resume='';save('Resume selection removed.');};
-$('reset').onclick=()=>{if(confirm('Reset all profile, experience, resume, and skill changes in this browser?')){state=structuredClone(initial);save('Demo reset.');}};
+$('resume').onchange=event=>{const file=event.target.files[0];if(!file)return;if(!/\.(pdf|docx)$/i.test(file.name)||file.size>5*1024*1024){say('Select a PDF or DOCX smaller than 5 MB.');event.target.value='';return;}state.resume=file.name;save('Resume updated.');event.target.value='';};
+$('remove-resume').onclick=()=>{state.resume='';save('Resume removed.');};
 
 $('edit-profile-toggle').onclick=()=>{const panel=$('profile-details');panel.hidden=!panel.hidden;$('edit-profile-toggle').setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden)$('name').focus();};
 $('edit-qualifications').onclick=()=>openEditor('Education & certifications',[{key:'details',label:'Education, coursework, certifications, and dates',value:state.qualifications||$('qualification-text').textContent,multiline:true,required:true}],values=>{state.qualifications=values.details;save('Qualifications updated.');});
-$('use-tracker-example').onclick=()=>{$('accomplishment').value='I built a spreadsheet tracker for incoming orders. It reduced missed orders by 25% and helped the team spot delays.';$('accomplishment').focus();};
 $('discover-skills').onclick=()=>{
 const story=$('accomplishment').value.trim();
 if(story.length<20){say('Describe a specific task or accomplishment in a little more detail.');return;}
@@ -223,7 +230,7 @@ const rules=[
 {test:/reduc|improv|saved|bottleneck/i,name:'Process improvement',context:'Describing a change and its result may demonstrate finding ways to improve how work gets done.',transfer:'Improving workflows in operations, administration, or service delivery.'}
 ];
 const matches=rules.filter(r=>r.test.test(story));
-if(!matches.length){say('This scripted demo recognizes scheduling, training, spreadsheet tracking, and process improvements. Try one of the fictional examples, or use Add skill to describe your own ability.');return;}
+if(!matches.length){say('No new skills identified yet. Add more detail about your responsibilities and results, or add a skill yourself.');return;}
 let added=0;
 for(const r of matches){
 const existing=state.skills.find(s=>s.name===r.name&&s.state!=='dismissed');
