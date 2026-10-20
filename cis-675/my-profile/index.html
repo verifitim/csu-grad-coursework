@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Profile · SkillBridge</title>
+<style>
+:root{--ink:#172d35;--muted:#5e727a;--teal:#086b60;--line:#dbe5e5;--bg:#f4f7f7}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 system-ui,sans-serif}header{background:white;border-bottom:1px solid var(--line);padding:19px max(5%,calc((100% - 1160px)/2));display:flex;align-items:center;justify-content:space-between}.brand{font-size:23px;font-weight:800;letter-spacing:-1px}.brand span{color:var(--teal)}.demo{font-size:12px;background:#fff3d8;color:#765009;padding:5px 12px;border-radius:20px}main{max-width:1160px;margin:35px auto;padding:0 24px}.intro{display:flex;justify-content:space-between;gap:20px;align-items:center}h1{font-size:34px;margin:0;letter-spacing:-1px}h2{font-size:20px;margin:0 0 8px}h3{font-size:16px;margin:0}p{margin:6px 0 16px}.muted,small{color:var(--muted)}.layout{display:grid;grid-template-columns:1.05fr 1fr;gap:24px;margin-top:24px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:24px;margin-bottom:22px}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.avatar{width:66px;height:66px;display:grid;place-items:center;background:#d9eeea;color:var(--teal);border-radius:18px;font-size:25px;font-weight:700}.identity{display:flex;align-items:center;gap:16px;margin-bottom:24px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}input,textarea{width:100%;border:1px solid #b8cccc;border-radius:8px;padding:10px 12px;color:var(--ink);font:inherit;background:white}textarea{min-height:105px;resize:vertical}button,.file{font:600 13px system-ui;cursor:pointer;border:1px solid #bdd1cd;border-radius:8px;background:white;color:var(--teal);padding:9px 13px;display:inline-block}button:hover,.file:hover{background:#eaf5f1}button.primary{background:var(--teal);color:white;border-color:var(--teal)}button:focus-visible,input:focus-visible,textarea:focus-visible,.file:focus-within{outline:3px solid #ecb953;outline-offset:3px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 8px;border-radius:5px;background:#e9edf0;color:#455761}.tag.suggested{background:#fff1d7;color:#7c5200}.tag.confirmed{background:#def1e7;color:#216344}.skill{padding:18px 0;border-top:1px solid var(--line)}.skill:first-child{border-top:0}.evidence{font-size:13px;padding:10px 12px;background:#f3f7f7;border-left:3px solid #9abeb5;border-radius:4px;margin-top:10px}.skill p{font-size:13px;color:var(--muted);margin:7px 0}.upload{padding:22px;border:1px dashed #9fbdb6;border-radius:10px;text-align:center;margin-top:15px;background:#f8fbfa}.upload input{max-width:100%;font-size:13px}.notice{border-radius:10px;background:#e9f4f1;color:#285f55;padding:14px 18px;font-size:13px;margin:20px 0}.experience{border-top:1px solid var(--line);padding-top:16px;margin-top:16px}.experience p{white-space:pre-wrap}.count{font-size:12px;color:var(--teal);font-weight:700}.status{font-size:13px;min-height:24px;color:var(--teal)}dialog{border:1px solid var(--line);border-radius:15px;padding:26px;width:min(540px,92vw);max-height:88vh;overflow:auto;color:var(--ink)}dialog::backdrop{background:#102b38a8}footer{padding:15px 0 30px;font-size:12px;color:var(--muted)}@media(max-width:760px){.layout{grid-template-columns:1fr}.intro{align-items:flex-start;flex-direction:column}.grid{grid-template-columns:1fr}main{padding:0 16px}.card{padding:20px}header{padding:16px}.demo{font-size:10px}}
+</style>
+</head>
+<body>
+<header><div class="brand">skill<span>bridge</span><small style="font-size:11px;letter-spacing:0;margin-left:12px">JOB SEEKER</small></div><span class="demo">CIS 675 · Fictional prototype</span></header>
+<main>
+<div class="intro"><div><small>YOUR NEXT OPPORTUNITY STARTS HERE</small><h1>My Profile</h1><p class="muted">Show the skills behind your experience.</p></div><button id="reset">Reset demo</button></div>
+<div class="notice">Interactive class mockup · All starting information is fictional. Changes stay in this browser. Resume selection is simulated; no file is uploaded or analyzed.</div>
+<div class="layout"><div>
+<section class="card" aria-labelledby="profile-heading">
+<div class="identity"><div class="avatar" aria-hidden="true">AM</div><div><h2 id="profile-heading">Your story</h2><span class="muted">Experience matters beyond a job title.</span></div></div>
+<form id="profile-form">
+<div class="grid"><div><label for="name">Full name</label><input id="name" required maxlength="100"></div><div><label for="location">Location</label><input id="location" maxlength="120"></div></div>
+<label for="headline">Professional headline</label><input id="headline" maxlength="160">
+<label for="about">About you</label><textarea id="about" maxlength="2000"></textarea>
+<div class="actions"><button class="primary" type="submit">Save profile</button></div>
+</form></section>
+<section class="card"><div class="row"><h2>Experience</h2><button id="add-experience">+ Add experience</button></div><p class="muted">Work, projects, volunteering, and accomplishments.</p><div id="experiences"></div></section>
+<section class="card"><h2>Resume</h2><p class="muted">Bring your experience together in one place.</p><div class="upload"><strong>Select a sample resume</strong><p><small>PDF or DOCX · Up to 5 MB · Simulation only</small></p><label for="resume">Choose resume file</label><input type="file" id="resume" accept=".pdf,.docx"><p id="resume-name"></p><button id="remove-resume" hidden>Remove resume</button></div><p><small>Only the file name is remembered. Suggestions below are scripted examples and do not come from your file.</small></p></section>
+</div><div>
+<section class="card"><div class="row"><h2>Skills you may already have</h2><span class="count" id="pending-count"></span></div><p class="muted">Review these suggestions and decide what represents you.</p><div id="suggestions"></div><button id="restore" hidden>Restore dismissed suggestions</button></section>
+<section class="card"><div class="row"><h2>Your skills</h2><button id="add-skill">+ Add skill</button></div><p class="muted">Candidate-confirmed skills, connected to real examples.</p><div id="confirmed"></div></section>
+<section class="card"><h3>You’re in control</h3><p class="muted">A suggestion is an idea for you to review. Confirming it means you believe it describes your abilities.</p><small>Candidate-confirmed does not mean independently verified. No qualifications are verified in this demo.</small></section>
+</div></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<footer>SkillBridge · CIS 675 · US2: Show Skills Beyond Degrees · US7: Profile and Experience · No backend services</footer>
+</main>
+<dialog id="editor"><form id="edit-form"><h2 id="editor-title"></h2><div id="editor-fields"></div><div class="actions"><button class="primary" type="submit">Save changes</button><button type="button" id="cancel">Cancel</button></div></form></dialog>
+<script>
+'use strict';
+const key='cis675-skillbridge-profile-v1';
+const initial={
+profile:{name:'Alex Morgan',location:'Fort Collins, CO',headline:'Operations coordinator | Turning everyday work into better systems',about:'I help busy teams stay organized, solve customer problems, and improve how work gets done. I am exploring opportunities where I can bring my coordination and problem-solving skills.'},
+experiences:[{title:'Operations Coordinator',org:'Juniper Supply Co. (fictional)',dates:'2023 – Present',detail:'Coordinated weekly schedules for 12 team members. Built a spreadsheet tracker that reduced missed orders by 25%. Trained four new colleagues on order and inventory procedures.'},{title:'Volunteer Event Organizer',org:'Northside Community Pantry (fictional)',dates:'2022 – 2023',detail:'Organized monthly donation events, coordinated volunteers, and worked with local partners to serve 80 households.'}],
+skills:[{name:'Process improvement',context:'Your order-tracking accomplishment suggests you can identify bottlenecks and improve a workflow.',evidence:'Operations Coordinator · Built a spreadsheet tracker that reduced missed orders by 25%.',state:'suggested'},{name:'Team coordination',context:'Scheduling and volunteer work can demonstrate coordination even without a management title.',evidence:'Operations Coordinator · Coordinated weekly schedules for 12 team members.',state:'suggested'},{name:'Training and onboarding',context:'Helping new colleagues learn procedures can demonstrate teaching and communication skills.',evidence:'Operations Coordinator · Trained four new colleagues on order and inventory procedures.',state:'suggested'},{name:'Event planning',context:'Added by candidate.',evidence:'Volunteer Event Organizer · Organized monthly donation events.',state:'confirmed'}],resume:''};
+let state=structuredClone(initial);
+try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&saved.profile&&Array.isArray(saved.skills)&&Array.isArray(saved.experiences))state=saved;}catch(e){}
+const $=id=>document.getElementById(id);
+function say(message){$('status').textContent=message;}
+function persist(){try{localStorage.setItem(key,JSON.stringify(state));return true;}catch(e){say('Browser storage is unavailable. Changes will last only while this page is open.');return false;}}
+function save(message){if(persist())say(message+' Saved in this browser.');render();}
+function node(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
+function button(text,fn){const el=node('button',text);el.type='button';el.addEventListener('click',fn);return el;}
+function render(){
+for(const field of ['name','location','headline','about'])$(field).value=state.profile[field]||'';
+$('experiences').replaceChildren();
+state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
+$('suggestions').replaceChildren();$('confirmed').replaceChildren();
+state.skills.forEach((skill,i)=>{
+if(skill.state==='dismissed')return;
+const box=node('article',undefined,'skill');const row=node('div',undefined,'row');row.append(node('h3',skill.name),node('span',skill.state==='suggested'?'Suggested':'Candidate-confirmed','tag '+skill.state));box.append(row);
+if(skill.state==='suggested')box.append(node('p',skill.context));
+box.append(node('div','Supporting experience: '+skill.evidence,'evidence'));
+const actions=node('div',undefined,'actions');
+if(skill.state==='suggested')actions.append(button('Confirm',()=>{skill.state='confirmed';save('Skill confirmed.');}));
+actions.append(button('Edit',()=>editSkill(i)),button(skill.state==='suggested'?'Dismiss':'Remove',()=>{skill.state='dismissed';save('Skill dismissed.');}));
+box.append(actions);$(skill.state==='suggested'?'suggestions':'confirmed').append(box);
+});
+const pending=state.skills.filter(s=>s.state==='suggested').length;
+$('pending-count').textContent=pending+' to review';
+if(!pending)$('suggestions').append(node('p','All suggestions reviewed. Your confirmed skills appear below.','muted'));
+if(!state.skills.some(s=>s.state==='confirmed'))$('confirmed').append(node('p','Confirm a suggestion or add a skill to get started.','muted'));
+$('restore').hidden=!state.skills.some(s=>s.state==='dismissed');
+$('resume-name').textContent=state.resume?'Selected (simulation): '+state.resume:'No resume selected.';
+$('remove-resume').hidden=!state.resume;
+}
+let onSave;
+function openEditor(title,fields,callback){
+$('editor-title').textContent=title;$('editor-fields').replaceChildren();
+fields.forEach(f=>{const label=node('label',f.label);label.htmlFor='edit-'+f.key;const input=node(f.multiline?'textarea':'input');input.id='edit-'+f.key;input.name=f.key;input.value=f.value||'';input.required=!!f.required;input.maxLength=2000;$('editor-fields').append(label,input);});
+onSave=callback;$('editor').showModal();
+}
+function editExperience(index){
+const exp=index===undefined?{title:'',org:'',dates:'',detail:''}:state.experiences[index];
+openEditor(index===undefined?'Add experience':'Edit experience',[
+{key:'title',label:'Role or project name',value:exp.title,required:true},
+{key:'org',label:'Organization',value:exp.org,required:true},
+{key:'dates',label:'Dates',value:exp.dates},
+{key:'detail',label:'What did you do? Include tasks and accomplishments.',value:exp.detail,multiline:true,required:true}
+],values=>{if(index===undefined)state.experiences.push(values);else state.experiences[index]=values;save('Experience updated. Skill evidence can be updated using Edit on each skill.');});
+}
+function editSkill(index){
+const skill=index===undefined?{name:'',evidence:''}:state.skills[index];
+openEditor(index===undefined?'Add your skill':'Edit skill',[
+{key:'name',label:'Skill name',value:skill.name,required:true},
+{key:'evidence',label:'Supporting work, project, certification, or accomplishment',value:skill.evidence,multiline:true,required:true}
+],values=>{if(index===undefined)state.skills.push({...values,state:'confirmed',context:'Added by candidate.'});else Object.assign(state.skills[index],values);save('Skill updated.' );});
+}
+$('profile-form').addEventListener('submit',event=>{event.preventDefault();for(const field of ['name','location','headline','about'])state.profile[field]=$(field).value.trim();save('Profile updated.');});
+$('edit-form').addEventListener('submit',event=>{event.preventDefault();const values=Object.fromEntries(new FormData(event.target));for(const k in values)values[k]=values[k].trim();if(!values.name&&!values.title){say('Please enter a name.');return;}onSave(values);$('editor').close();});
+$('cancel').onclick=()=>$('editor').close();
+$('add-experience').onclick=()=>editExperience();
+$('add-skill').onclick=()=>editSkill();
+$('restore').onclick=()=>{state.skills.forEach(s=>{if(s.state==='dismissed')s.state='suggested';});save('Dismissed skills restored for review.');};
+$('resume').onchange=event=>{const file=event.target.files[0];if(!file)return;if(!/\.(pdf|docx)$/i.test(file.name)||file.size>5*1024*1024){say('Select a PDF or DOCX smaller than 5 MB.');event.target.value='';return;}state.resume=file.name;save('Resume selection simulated. No file contents were read or uploaded.');event.target.value='';};
+$('remove-resume').onclick=()=>{state.resume='';save('Resume selection removed.');};
+$('reset').onclick=()=>{if(confirm('Reset all profile, experience, resume, and skill changes in this browser?')){state=structuredClone(initial);save('Demo reset.');}};
+render();
+</script>
+</body></html>
