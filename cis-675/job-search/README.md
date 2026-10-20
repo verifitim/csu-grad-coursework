@@ -9,3 +9,9 @@ The page reads candidate-confirmed skills from the My Profile prototype when ava
 Shared persona maps include My Profile and Job Search for Job seeker and Job Posting for Hiring manager. New pages must follow ../AGENTS.md.
 
 JavaScript syntax checked. Browser runtime unavailable for visual testing.
+
+## Sprint 1 refinement
+
+Industry exploration spans wholesale/distribution, technology, community/nonprofit, and business services. Skills prioritize results rather than excluding every role without an exact skill-name overlap. The first role reflects the locally saved Job Posting when available.
+
+Validation: JavaScript syntax and element IDs checked. DOM stand-in checks covered industry filtering, broader exploration, sample-candidate migration, equivalent-experience selection, evaluation modes, and candidate detail. A connected browser was unavailable for visual QA.
