@@ -164,10 +164,16 @@ animation:skill-found-sweep 2100ms ease-out both;
 .persona-chooser label{margin:0;font-size:11px;font-weight:500;color:var(--muted)}
 .persona-chooser select{width:auto;min-width:145px;padding:7px 28px 7px 10px;font:500 12px/1.5 ui-sans-serif,system-ui;color:var(--ink);border:1px solid var(--line);border-radius:5px;background-color:#fff;cursor:pointer}
 @media(max-width:480px){.persona-chooser{gap:6px}.persona-chooser label{font-size:10px}.persona-chooser select{min-width:130px;font-size:11px}}
-</style>
+
+.role-navigation{display:flex;align-items:center;justify-content:flex-end;gap:20px}
+.page-chooser{display:flex;align-items:center;gap:10px}
+.page-chooser label{margin:0;font-size:11px;font-weight:500;color:var(--muted)}
+.page-chooser select{width:auto;min-width:130px;padding:7px 28px 7px 10px;font:500 12px/1.5 ui-sans-serif,system-ui;color:var(--ink);border:1px solid var(--line);border-radius:5px;background-color:white;cursor:pointer}
+@media(max-width:650px){header{align-items:flex-start;gap:16px}.role-navigation{flex-direction:column;align-items:flex-end;gap:8px}.persona-chooser,.page-chooser{gap:8px}.persona-chooser select,.page-chooser select{width:145px;font-size:11px;min-width:0}.persona-chooser label,.page-chooser label{font-size:11px}}
+header{height:auto;min-height:76px}@media(max-width:650px){header{min-height:65px}}</style>
 </head>
 <body>
-<header><div class="brand">Team 4</div><div class="persona-chooser"><label for="persona">Persona</label><select id="persona" aria-label="Choose persona"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div></header>
+<header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Page</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/">My Profile</option></select></div></nav></header>
 <main>
 <div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div></div>
 
@@ -212,10 +218,34 @@ animation:skill-found-sweep 2100ms ease-out both;
 <dialog id="editor"><form id="edit-form"><h2 id="editor-title"></h2><div id="editor-fields"></div><div class="actions"><button class="primary" type="submit">Save changes</button><button type="button" id="cancel">Cancel</button></div></form></dialog>
 <script>
 'use strict';
-document.getElementById('persona').addEventListener('change',event=>{
-const destinations={'job-seeker':'../my-profile/','hiring-manager':'../job-posting/'};
-const destination=destinations[event.target.value];
-if(destination)window.location.assign(destination);
+// Add each new persona page to this navigation map on both pages.
+const personaPages={
+'job-seeker':[{label:'My Profile',href:'../my-profile/'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/'}]
+};
+const personaSelect=document.getElementById('persona');
+const pageSelect=document.getElementById('page-navigation');
+function populatePages(role){
+pageSelect.replaceChildren();
+for(const page of personaPages[role]||[]){
+const option=document.createElement('option');option.value=page.href;option.textContent=page.label;
+pageSelect.append(option);
+}
+}
+populatePages(personaSelect.value);
+personaSelect.addEventListener('change',event=>{
+const pages=personaPages[event.target.value];
+populatePages(event.target.value);
+if(pages&&pages.length)window.location.assign(pages[0].href);
+});
+pageSelect.addEventListener('change',event=>{
+const pages=personaPages[personaSelect.value]||[];
+if(pages.some(page=>page.href===event.target.value))window.location.assign(event.target.value);
+});
+// Restore the page's actual role if the browser restores select values on Back.
+window.addEventListener('pageshow',()=>{
+personaSelect.value='job-seeker';
+populatePages(personaSelect.value);
 });
 const key='cis675-skillbridge-profile-v1';
 const initial={
