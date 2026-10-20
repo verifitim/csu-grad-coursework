@@ -40,9 +40,9 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 </style></head><body><header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker" selected>Job seeker</option><option value="hiring-manager">Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../my-profile/?nav=5">My Profile</option><option value="../job-search/?nav=5" selected>Job Search</option></select></div></nav></header><main>
 <div class="intro"><small class="eyebrow">JOB SEARCH</small><h1>Your skills can take you further.</h1><p class="muted">Find roles you know—and opportunities you might not have thought to search for.</p></div>
 <form id="search-form" class="search-box"><label for="query">Job title, skill, or keyword</label><input id="query" placeholder="Try coordination, training, or operations">
-<div class="grid"><div><label for="search-location">Location</label><select id="search-location"><option value="all">All locations</option><option value="Colorado">Colorado</option><option value="Remote">Remote</option></select></div><div><label for="search-mode">Show me</label><select id="search-mode"><option value="skills">Prioritize my skills</option><option value="all">All jobs</option></select></div></div>
+<div><div><label for="search-location">Location</label><select id="search-location"><option value="all">All locations</option><option value="Colorado">Colorado</option><option value="Remote">Remote</option></select></div></div>
 <label for="industry">Explore an industry</label><select id="industry"><option value="all">All industries</option><option>Wholesale & distribution</option><option>Technology</option><option>Community & nonprofit</option><option>Business services</option></select><p class="field-note">Your abilities can travel across industries. Explore one, or keep all industries open.</p><div class="actions"><button class="primary" type="submit">Find jobs</button><button type="button" id="clear">Clear filters</button></div></form>
-<section class="profile-context" aria-labelledby="skills-label"><h3 id="skills-label">Starting with your skills</h3><div class="skill-chips" id="profile-skills"></div><p>Start with the skills you confirmed. Explore how they could apply in other roles and industries, then review each job’s requirements.</p><a href="../my-profile/?nav=5">Update My Profile</a></section>
+<section class="profile-context" aria-labelledby="skills-label"><h3 id="skills-label">Starting with your skills</h3><div class="skill-chips" id="profile-skills"></div><p>Jobs are prioritized by connections to your confirmed skills. Explore other roles and industries, then review each job’s requirements.</p><a href="../my-profile/?nav=5">Update My Profile</a></section>
 <div class="row results-heading"><h2>Opportunities to explore</h2><span id="results-count" role="status" aria-live="polite"></span></div>
 <div id="search-status" class="status" role="status" aria-live="polite"></div>
 <div id="job-results"></div><footer style="margin-top:28px">Team 4</footer></main>
@@ -103,7 +103,7 @@ function toggleSave(id){savedJobs=savedJobs.includes(id)?savedJobs.filter(x=>x!=
 function render(){
 const query=$('query').value.trim().toLowerCase(),region=$('search-location').value,industry=$('industry').value;
 let results=jobs.filter(j=>(industry==='all'||j.industry===industry)&&(region==='all'||j.region===region)&&(!query||[j.title,j.company,j.summary,j.industry,...j.skills].join(' ').toLowerCase().includes(query)));
-if($('search-mode').value==='skills'&&skills.length)results=results.sort((a,b)=>overlap(b).length-overlap(a).length);
+results=results.sort((a,b)=>overlap(b).length-overlap(a).length);
 $('results-count').textContent=results.length+' '+(results.length===1?'opportunity':'opportunities');
 $('job-results').replaceChildren();
 for(const job of results){const card=node('article',undefined,'result-card');card.append(node('small',job.type,'match-label'),node('h3',job.title),node('p',job.company+' · '+job.industry+' · '+job.location+' · '+job.work+' · '+job.pay,'metadata'),node('p',job.summary,'summary'));
@@ -118,6 +118,6 @@ if(overlap(job).length){const block=node('div',undefined,'detail-block');block.a
 $('job-detail').showModal();}
 $('close-detail').onclick=()=>$('job-detail').close();
 $('search-form').onsubmit=event=>{event.preventDefault();render();};
-$('clear').onclick=()=>{$('query').value='';$('search-location').value='all';$('industry').value='all';$('search-mode').value='all';render();};
+$('clear').onclick=()=>{$('query').value='';$('search-location').value='all';$('industry').value='all';render();};
 render();
 </script></body></html>
