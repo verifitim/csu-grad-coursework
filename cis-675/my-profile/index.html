@@ -84,16 +84,32 @@ main{max-width:820px;margin-top:42px}
 .status:not(:empty){position:sticky;top:0;z-index:2;background:#fff;padding:12px 0;border-bottom:1px solid var(--line)}
 footer{padding-top:0}
 @media(max-width:650px){main{margin-top:28px}.profile-flow{margin-top:22px}.profile-flow>.card,.skills-group>.card{padding-bottom:26px;margin-bottom:26px}.card .row{align-items:center}.card .row h2{font-size:18px}}
+
+.profile-summary{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:23px 0 28px;border-bottom:1px solid var(--line);margin-bottom:28px}
+.profile-summary h2{font-size:20px}.profile-summary p{font-size:13px;margin:4px 0;color:#535c67}.profile-summary small{font-size:12px}
+.eyebrow{font-size:10px;font-weight:650;letter-spacing:.12em;color:#757d88;display:block;margin-bottom:13px}
+.discovery h2{font-size:25px;line-height:1.35;letter-spacing:-.8px;max-width:24ch}
+.profile-flow .discovery{padding-top:4px}.discovery textarea{min-height:130px}
+.simulation-note{font-size:11px;color:#757d88;line-height:1.7;margin:14px 0 0}
+.section-intro{margin:34px 0 24px}.section-intro>h2{font-size:23px}.section-intro p{font-size:13px}
+.profile-flow .skill h3{font-size:16px}.profile-flow .skill .transfer{color:#334f6b;font-size:12px}
+.skill small{display:block;margin:12px 0 0;font-size:11px}.skill .evidence{color:#384454}
+.qualification-text{white-space:pre-wrap;font-size:13px;line-height:1.9}
+#profile-details[hidden]{display:none}
+#profile-details{margin:0 0 30px}
+.intro h1{font-size:38px;max-width:17ch}.intro{align-items:flex-start}.intro>button{margin-top:12px;white-space:nowrap}
+.profile-flow .skill-guidance{font-size:11px;margin-top:-8px;color:#72777f}
+@media(max-width:650px){.intro h1{font-size:32px}.intro p{font-size:13px}.intro{flex-direction:column}.intro>button{margin-top:0}.discovery h2{font-size:23px}.profile-summary{align-items:flex-start}.profile-summary button{white-space:nowrap}.row{flex-wrap:wrap}}
 </style>
 </head>
 <body>
 <header><div class="brand">Team 4</div><span class="demo">CIS 675 · Fictional prototype</span></header>
 <main>
-<div class="intro"><div><small>CANDIDATE PROFILE</small><h1>My Profile</h1><p class="muted">Tell your story, then show the skills behind it.</p></div><button id="reset">Reset demo</button></div>
-<div class="notice">Fictional class demo · Changes save in this browser. Resume selection is simulated; no file is uploaded or analyzed.</div>
+<div class="intro"><div><small>MY PROFILE</small><h1>Make your experience count.</h1><p class="muted">Help employers see what you can do—even when your background looks different.</p></div><button id="reset">Reset demo</button></div>
+<div class="notice">Fictional demo · Changes stay in this browser · Skill discovery and resume selection are simulations.</div>
 <div id="status" class="status" role="status" aria-live="polite"></div>
-<div class="profile-flow">
-<section class="card" aria-labelledby="profile-heading">
+<section class="profile-summary" aria-label="Profile summary"><div><h2 id="summary-name"></h2><p id="summary-headline"></p><small id="summary-location"></small></div><button id="edit-profile-toggle" aria-expanded="false" aria-controls="profile-details">Edit profile</button></section>
+<section class="card" id="profile-details" aria-labelledby="profile-heading" hidden>
 <h2 id="profile-heading">Profile details</h2><p class="muted">Introduce yourself and the work you want to do.</p>
 <form id="profile-form">
 <div class="grid"><div><label for="name">Full name</label><input id="name" required maxlength="100"></div><div><label for="location">Location</label><input id="location" maxlength="120"></div></div>
@@ -101,12 +117,19 @@ footer{padding-top:0}
 <label for="about">About you</label><textarea id="about" maxlength="2000"></textarea>
 <div class="actions"><button class="primary" type="submit">Save profile</button></div>
 </form></section>
-<section class="card"><h2>Resume</h2><p class="muted">Select a sample resume to demonstrate adding a document to your profile.</p><div class="upload"><label for="resume">Choose resume file <span class="field-hint">PDF or DOCX · Up to 5 MB</span></label><input type="file" id="resume" accept=".pdf,.docx"><p id="resume-name"></p><button id="remove-resume" hidden>Remove resume</button></div><p><small>Only the file name is remembered. Suggestions below are scripted examples and do not come from your file.</small></p></section>
+<div class="profile-flow">
+<section class="card discovery" aria-labelledby="discovery-heading"><small class="eyebrow">01 / START WITH SOMETHING YOU DID</small><h2 id="discovery-heading">There may be more to your experience than you think.</h2><p class="muted">Describe a task, accomplishment, or problem you solved. Paid work, volunteering, school projects, and everyday responsibilities all count.</p>
+<label for="accomplishment">What did you do, and what changed because of it?</label><textarea id="accomplishment" maxlength="2000">I scheduled shifts for 12 coworkers and handled last-minute coverage. I also trained four new colleagues on our order and inventory procedures.</textarea>
+<div class="actions"><button class="primary" id="discover-skills">Find skills in this example</button><button id="use-tracker-example">Try an order-tracking example</button></div>
+<p class="simulation-note">Demo: simple keyword rules illustrate the experience-to-skill connection. This is not an assessment or AI analysis. Existing suggestions below are fictional examples.</p>
+</section>
+<div class="section-intro"><small class="eyebrow">02 / RECOGNIZE YOUR TRANSFERABLE ABILITIES</small></div>
+<section class="card"><div class="row"><h2>What your experience could show</h2><span class="count" id="pending-count"></span></div><p class="muted">Your job title tells part of the story. These suggestions connect what you did to abilities that can matter in other roles.</p><p class="skill-guidance">Confirming a skill means you believe it represents your abilities. Candidate-confirmed skills are not independently verified.</p><div id="suggestions"></div><button id="restore" hidden>Restore dismissed suggestions</button></section>
+<section class="card"><div class="row"><h2>Skills you stand behind</h2><button id="add-skill">+ Add skill</button></div><p class="muted">Review your confirmed skills or add another skill with supporting experience.</p><div id="confirmed"></div></section>
+<div class="section-intro"><small class="eyebrow">03 / COMPLETE THE PICTURE</small><h2>Your experience and qualifications</h2><p class="muted">Skills add context to your background. Keep your work history, education, credentials, and resume alongside them.</p></div>
 <section class="card"><div class="row"><h2>Experience</h2><button id="add-experience">+ Add experience</button></div><p class="muted">Work, projects, volunteering, and accomplishments.</p><div id="experiences"></div></section>
-<div class="skills-group" aria-label="Skills">
-<section class="card"><div class="row"><h2>Suggested skills</h2><span class="count" id="pending-count"></span></div><p class="muted">Review each suggestion and its supporting experience. Confirm what fits, edit the details, or dismiss it.</p><p class="skill-guidance">Confirming a skill means you believe it represents your abilities. Candidate-confirmed skills are not independently verified.</p><div id="suggestions"></div><button id="restore" hidden>Restore dismissed suggestions</button></section>
-<section class="card"><div class="row"><h2>Confirmed skills</h2><button id="add-skill">+ Add skill</button></div><p class="muted">Review your confirmed skills or add another skill with supporting experience.</p><div id="confirmed"></div></section>
-</div>
+<section class="card"><div class="row"><h2>Education & certifications</h2><button id="edit-qualifications">Edit qualifications</button></div><p class="qualification-text" id="qualification-text"></p><small>Self-reported information · No independent verification in this demo.</small></section>
+<section class="card"><h2>Resume</h2><p class="muted">Select a sample resume to demonstrate adding a document to your profile.</p><div class="upload"><label for="resume">Choose resume file <span class="field-hint">PDF or DOCX · Up to 5 MB</span></label><input type="file" id="resume" accept=".pdf,.docx"><p id="resume-name"></p><button id="remove-resume" hidden>Remove resume</button></div><p><small>Only the file name is remembered. Suggestions below are scripted examples and do not come from your file.</small></p></section>
 </div>
 <footer>Team 4 · CIS 675 · US2: Show Skills Beyond Degrees · US7: Profile and Experience</footer>
 </main>
@@ -127,6 +150,10 @@ function save(message){if(persist())say(message+' Saved in this browser.');rende
 function node(tag,text,cls){const el=document.createElement(tag);if(text!==undefined)el.textContent=text;if(cls)el.className=cls;return el;}
 function button(text,fn){const el=node('button',text);el.type='button';el.addEventListener('click',fn);return el;}
 function render(){
+$('summary-name').textContent=state.profile.name;
+$('summary-headline').textContent=state.profile.headline;
+$('summary-location').textContent=state.profile.location;
+$('qualification-text').textContent=state.qualifications||'Front Range Community College · Business coursework, 2021–2022 (fictional)\nWorkplace Safety Certificate · 2023 (fictional)';
 for(const field of ['name','location','headline','about'])$(field).value=state.profile[field]||'';
 $('experiences').replaceChildren();
 state.experiences.forEach((exp,i)=>{const box=node('article',undefined,'experience');box.append(node('h3',exp.title),node('small',exp.org+' · '+exp.dates),node('p',exp.detail));box.append(button('Edit experience',()=>editExperience(i)));$('experiences').append(box);});
@@ -135,7 +162,9 @@ state.skills.forEach((skill,i)=>{
 if(skill.state==='dismissed')return;
 const box=node('article',undefined,'skill');const row=node('div',undefined,'row');row.append(node('h3',skill.name),node('span',skill.state==='suggested'?'Suggested':'Candidate-confirmed','tag '+skill.state));box.append(row);
 if(skill.state==='suggested')box.append(node('p',skill.context));
-box.append(node('div','Supporting experience: '+skill.evidence,'evidence'));
+box.append(node('div','You described: '+skill.evidence,'evidence'));
+if(skill.transfer)box.append(node('p','Where it can transfer: '+skill.transfer,'transfer'));
+if(skill.state==='suggested')box.append(node('small','Does this describe your ability? You decide.'));
 const actions=node('div',undefined,'actions');
 if(skill.state==='suggested')actions.append(button('Confirm',()=>{skill.state='confirmed';save('Skill confirmed.');}));
 actions.append(button('Edit',()=>editSkill(i)),button(skill.state==='suggested'?'Dismiss':'Remove',()=>{skill.state='dismissed';save('Skill dismissed.');}));
@@ -180,6 +209,32 @@ $('restore').onclick=()=>{state.skills.forEach(s=>{if(s.state==='dismissed')s.st
 $('resume').onchange=event=>{const file=event.target.files[0];if(!file)return;if(!/\.(pdf|docx)$/i.test(file.name)||file.size>5*1024*1024){say('Select a PDF or DOCX smaller than 5 MB.');event.target.value='';return;}state.resume=file.name;save('Resume selection simulated. No file contents were read or uploaded.');event.target.value='';};
 $('remove-resume').onclick=()=>{state.resume='';save('Resume selection removed.');};
 $('reset').onclick=()=>{if(confirm('Reset all profile, experience, resume, and skill changes in this browser?')){state=structuredClone(initial);save('Demo reset.');}};
+
+$('edit-profile-toggle').onclick=()=>{const panel=$('profile-details');panel.hidden=!panel.hidden;$('edit-profile-toggle').setAttribute('aria-expanded',String(!panel.hidden));if(!panel.hidden)$('name').focus();};
+$('edit-qualifications').onclick=()=>openEditor('Education & certifications',[{key:'details',label:'Education, coursework, certifications, and dates',value:state.qualifications||$('qualification-text').textContent,multiline:true,required:true}],values=>{state.qualifications=values.details;save('Qualifications updated.');});
+$('use-tracker-example').onclick=()=>{$('accomplishment').value='I built a spreadsheet tracker for incoming orders. It reduced missed orders by 25% and helped the team spot delays.';$('accomplishment').focus();};
+$('discover-skills').onclick=()=>{
+const story=$('accomplishment').value.trim();
+if(story.length<20){say('Describe a specific task or accomplishment in a little more detail.');return;}
+const rules=[
+{test:/schedul|shifts|coverage/i,name:'Team coordination',context:'Scheduling people and managing coverage may demonstrate organizing work across a team.',transfer:'Coordinating staff, volunteers, or project contributors across different industries.'},
+{test:/train|onboard|taught|teach/i,name:'Training and onboarding',context:'Helping colleagues learn procedures may demonstrate explaining tasks and supporting others.',transfer:'Employee onboarding, customer education, and peer training.'},
+{test:/spreadsheet|tracker/i,name:'Spreadsheet-based tracking',context:'Building or using a tracker may demonstrate organizing information to support decisions.',transfer:'Order tracking, project administration, inventory support, and reporting.'},
+{test:/reduc|improv|saved|bottleneck/i,name:'Process improvement',context:'Describing a change and its result may demonstrate finding ways to improve how work gets done.',transfer:'Improving workflows in operations, administration, or service delivery.'}
+];
+const matches=rules.filter(r=>r.test.test(story));
+if(!matches.length){say('This scripted demo recognizes scheduling, training, spreadsheet tracking, and process improvements. Try one of the fictional examples, or use Add skill to describe your own ability.');return;}
+let added=0;
+for(const r of matches){
+const existing=state.skills.find(s=>s.name===r.name&&s.state!=='dismissed');
+if(existing&&existing.state==='confirmed')continue;
+const entry={name:r.name,context:r.context,evidence:story,transfer:r.transfer,state:'suggested'};
+if(existing)Object.assign(existing,entry);else state.skills.push(entry);added++;
+}
+save(added?added+' skill suggestions are ready for your review.':'These abilities are already in your confirmed skills.');
+$('suggestions').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
 render();
 </script>
 </body></html>
