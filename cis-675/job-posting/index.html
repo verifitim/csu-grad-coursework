@@ -20,7 +20,7 @@ header .page-chooser{display:flex;visibility:visible}
 header #page-navigation{display:block;visibility:visible;min-width:145px}
 @media(max-width:650px){header .role-navigation{flex-direction:column;align-items:flex-end}header #page-navigation{width:145px}}
 </style></head><body>
-<header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker">Job seeker</option><option value="hiring-manager" selected>Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../job-posting/?nav=4" selected>Job Posting</option><option value="../candidate-matches/?nav=4">Candidate Matches</option></select></div></nav></header>
+<header><div class="brand">Team 4</div><nav class="role-navigation" aria-label="Role and page navigation"><div class="persona-chooser"><label for="persona">I'm a</label><select id="persona" aria-label="I'm a"><option value="job-seeker">Job seeker</option><option value="hiring-manager" selected>Hiring manager</option></select></div><div class="page-chooser"><label for="page-navigation">Go to</label><select id="page-navigation" aria-label="Choose a page"><option value="../job-posting/?nav=5" selected>Job Posting</option><option value="../candidate-matches/?nav=5">Candidate Matches</option></select></div></nav></header>
 <main><div class="intro"><div class="row"><small class="eyebrow">JOB POSTING</small><span class="badge" id="posting-state">Draft</span></div><h1>Define what success takes.</h1><p class="muted">Set the qualifications that matter, and decide how to recognize strong candidates—even when their backgrounds look different.</p></div>
 <form id="job-form">
 <section class="section"><small class="eyebrow">01 / THE ROLE</small><h2>Job details</h2><p>Give candidates a clear picture of the work and its purpose.</p>
@@ -40,20 +40,20 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 </fieldset><div class="explanation" id="evaluation-summary" role="status"></div>
 <p class="field-note">Your required qualifications still apply with every approach. You make the hiring decision.</p></section>
 <div class="footer-actions"><small>Review the role and criteria before saving.</small><div class="actions"><button type="button" id="preview">Preview posting</button><button class="primary" type="submit">Save posting</button></div></div>
-<div id="status" class="status" role="status" aria-live="polite"></div></form><footer>Team 4</footer></main>
+<div id="status" class="status" role="status" aria-live="polite"></div><p><a href="../candidate-matches/?nav=5" style="font-size:13px;color:var(--blue)">Review candidate matches for this job →</a></p></form><footer>Team 4</footer></main>
 <dialog id="criterion-editor" aria-labelledby="criterion-heading"><form id="criterion-form"><h2 id="criterion-heading">Add qualification</h2>
 <label for="criterion-name">Qualification</label><input id="criterion-name" required maxlength="240">
 <label for="criterion-type">Type</label><select id="criterion-type"><option>Skill</option><option>Experience</option><option>Education</option><option>Certification</option></select>
 <label for="criterion-level">Importance</label><select id="criterion-level"><option value="required">Required</option><option value="preferred">Preferred</option></select>
-<label for="criterion-context">What would demonstrate this qualification?</label><textarea id="criterion-context" maxlength="1500" placeholder="Describe relevant work, outcomes, credentials, or equivalent experience."></textarea>
+<label for="criterion-route">Acceptable evidence</label><select id="criterion-route"><option value="specified">The stated qualification</option><option value="equivalent">The stated qualification OR equivalent experience</option></select><p class="field-note">An alternative does not remove the requirement. It defines another acceptable way to meet it.</p><label for="criterion-context">What would demonstrate this qualification?</label><textarea id="criterion-context" maxlength="1500" placeholder="Describe relevant work, outcomes, credentials, or equivalent experience."></textarea>
 <div class="actions"><button class="primary" type="submit">Save qualification</button><button type="button" id="cancel-criterion">Cancel</button></div></form></dialog>
 <dialog id="preview-dialog" aria-labelledby="preview-heading"><small class="eyebrow">POSTING PREVIEW</small><h2 id="preview-heading"></h2><div id="preview-content"></div><div class="actions"><button type="button" id="close-preview">Back to editing</button></div></dialog>
 <script>
 'use strict';
 // Add each new persona page to this navigation map on both pages.
 const personaPages={
-'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=4'},{label:'Job Search',href:'../job-search/?nav=4'}],
-'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=4'},{label:'Candidate Matches',href:'../candidate-matches/?nav=4'}]
+'job-seeker':[{label:'My Profile',href:'../my-profile/?nav=5'},{label:'Job Search',href:'../job-search/?nav=5'}],
+'hiring-manager':[{label:'Job Posting',href:'../job-posting/?nav=5'},{label:'Candidate Matches',href:'../candidate-matches/?nav=5'}]
 };
 const personaSelect=document.getElementById('persona');
 const pageSelect=document.getElementById('page-navigation');
@@ -86,11 +86,15 @@ const defaults={title:'Operations Coordinator',company:'Juniper Supply Co.',loca
 {name:'Coordinate schedules and changing priorities',type:'Skill',level:'required',context:'Show how you organized people, tasks, or coverage in work, a project, or a volunteer role.'},
 {name:'Communicate clearly with customers and colleagues',type:'Skill',level:'required',context:'Describe a time you explained a process, handled a concern, or helped a team stay informed.'},
 {name:'Use spreadsheets to track work',type:'Skill',level:'required',context:'Examples may include tracking orders, inventory, schedules, or project progress.'},
-{name:'Business coursework or equivalent practical experience',type:'Education',level:'preferred',context:'Relevant coursework or experience organizing business operations.'},
+{name:'Business degree or equivalent practical experience',type:'Education',level:'preferred',context:'A business degree, or practical experience coordinating schedules, orders, and operational processes.'},
 {name:'Experience improving an operational workflow',type:'Experience',level:'preferred',context:'Describe a process you improved and the outcome.'}
 ]};
 let state=structuredClone(defaults);
 try{const saved=JSON.parse(localStorage.getItem(storageKey));if(saved&&Array.isArray(saved.criteria))state=saved;}catch(e){}
+state.criteria.forEach(c=>{
+if(c.name==='Business coursework or equivalent practical experience'){c.name='Business degree or equivalent practical experience';c.context='A business degree, or practical experience coordinating schedules, orders, and operational processes.';}
+if(!c.route)c.route=/or equivalent/i.test(c.name)?'equivalent':'specified';
+});
 const summaries={traditional:'Review the education, credentials, and work experience candidates report against your criteria.',skills:'Surface abilities supported by tasks and accomplishments, including experience gained in different industries or roles.',both:'Recognize strong traditionally qualified candidates and candidates whose transferable abilities may otherwise be overlooked.'};
 const fields=['title','company','location','arrangement','description'];
 function node(tag,text,cls){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;}
@@ -102,7 +106,7 @@ for(const level of ['required','preferred']){
 const container=$(level+'-list');container.replaceChildren();
 const entries=state.criteria.map((c,i)=>({c,i})).filter(x=>x.c.level===level);
 $(level+'-count').textContent=entries.length;
-for(const {c,i} of entries){const row=node('article',undefined,'criterion');row.append(node('small',c.type),node('h3',c.name));if(c.context)row.append(node('p',c.context));
+for(const {c,i} of entries){const row=node('article',undefined,'criterion');row.append(node('small',c.type),node('h3',c.name));if(c.context)row.append(node('p',c.context));if(c.route==='equivalent')row.append(node('p','Equivalent experience accepted.'));
 const actions=node('div',undefined,'actions');
 actions.append(action('Edit',()=>editCriterion(i)),action('Move to '+(level==='required'?'preferred':'required'),()=>{c.level=level==='required'?'preferred':'required';dirty();renderCriteria();}),action('Remove',()=>{state.criteria.splice(i,1);dirty();renderCriteria();}));
 row.append(actions);container.append(row);}
@@ -116,15 +120,16 @@ let editing=null;
 function editCriterion(index,level='required'){editing=index;const c=index===null?{name:'',type:'Skill',level,context:''}:state.criteria[index];
 $('criterion-heading').textContent=index===null?'Add qualification':'Edit qualification';
 for(const f of ['name','type','level','context'])$('criterion-'+f).value=c[f]||'';
+$('criterion-route').value=c.route||(/or equivalent/i.test(c.name)?'equivalent':'specified');
 $('criterion-editor').showModal();}
 $('add-required').onclick=()=>editCriterion(null,'required');
 $('add-preferred').onclick=()=>editCriterion(null,'preferred');
 $('cancel-criterion').onclick=()=>$('criterion-editor').close();
-$('criterion-form').onsubmit=event=>{event.preventDefault();const entry={};for(const f of ['name','type','level','context'])entry[f]=$('criterion-'+f).value.trim();if(!entry.name)return;if(editing===null)state.criteria.push(entry);else state.criteria[editing]=entry;renderCriteria();dirty();$('criterion-editor').close();};
+$('criterion-form').onsubmit=event=>{event.preventDefault();const entry={};for(const f of ['name','type','level','context'])entry[f]=$('criterion-'+f).value.trim();entry.route=$('criterion-route').value;if(!entry.name)return;if(editing===null)state.criteria.push(entry);else state.criteria[editing]=entry;renderCriteria();dirty();$('criterion-editor').close();};
 $('job-form').onsubmit=event=>{event.preventDefault();capture();try{localStorage.setItem(storageKey,JSON.stringify(state));$('posting-state').textContent='Saved';$('status').textContent='Job posting and evaluation criteria saved.';}catch(e){$('status').textContent='Unable to save changes. Please try again.';}};
 $('preview').onclick=()=>{if(!$('job-form').reportValidity())return;capture();$('preview-heading').textContent=state.title;const content=$('preview-content');content.replaceChildren(node('p',state.company+' · '+state.location+' · '+state.arrangement));
 const about=node('div',undefined,'preview-block');about.append(node('h3','About the role'),node('p',state.description));content.append(about);
-for(const level of ['required','preferred']){const block=node('div',undefined,'preview-block');block.append(node('h3',level==='required'?'Required qualifications':'Preferred qualifications'));const list=node('ul');for(const c of state.criteria.filter(c=>c.level===level)){list.append(node('li',c.name+(c.context?' — '+c.context:'')));}if(list.children.length)block.append(list);else block.append(node('p','None specified.'));content.append(block);}
+for(const level of ['required','preferred']){const block=node('div',undefined,'preview-block');block.append(node('h3',level==='required'?'Required qualifications':'Preferred qualifications'));const list=node('ul');for(const c of state.criteria.filter(c=>c.level===level)){list.append(node('li',c.name+(c.route==='equivalent'?' (equivalent experience accepted)':'')+(c.context?' — '+c.context:'')));}if(list.children.length)block.append(list);else block.append(node('p','None specified.'));content.append(block);}
 const evaluation=node('div',undefined,'preview-block');evaluation.append(node('h3','How we consider your background'),node('p',summaries[state.evaluation]),node('p','Required qualifications apply. Preferred qualifications are additional strengths, not prerequisites.'));content.append(evaluation);$('preview-dialog').showModal();};
 $('close-preview').onclick=()=>$('preview-dialog').close();
 renderCriteria();updateEvaluation();
