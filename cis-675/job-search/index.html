@@ -43,7 +43,7 @@ header #page-navigation{display:block;visibility:visible;min-width:145px}
 <div><div><label for="search-location">Location</label><select id="search-location"><option value="all">All locations</option><option value="Colorado">Colorado</option><option value="Remote">Remote</option></select></div></div>
 <label for="industry">Explore an industry</label><select id="industry"><option value="all">All industries</option><option>Wholesale & distribution</option><option>Technology</option><option>Community & nonprofit</option><option>Business services</option></select><p class="field-note">Your abilities can travel across industries. Explore one, or keep all industries open.</p><div class="actions"><button class="primary" type="submit">Find jobs</button><button type="button" id="clear">Clear filters</button></div></form>
 <section class="profile-context" aria-labelledby="skills-label"><h3 id="skills-label">Starting with your skills</h3><div class="skill-chips" id="profile-skills"></div><p>Jobs are prioritized by connections to your confirmed skills. Explore other roles and industries, then review each job’s requirements.</p><a href="../my-profile/?nav=5">Update My Profile</a></section>
-<div class="row results-heading"><h2>Opportunities to explore</h2><span id="results-count" role="status" aria-live="polite"></span></div>
+<div class="row results-heading"><h2 id="results-heading">Suggested jobs based on your skills</h2><span id="results-count" role="status" aria-live="polite"></span></div>
 <div id="search-status" class="status" role="status" aria-live="polite"></div>
 <div id="job-results"></div><footer style="margin-top:28px">Team 4</footer></main>
 <dialog id="job-detail" aria-labelledby="detail-heading"><small class="eyebrow">JOB DETAILS</small><h2 id="detail-heading"></h2><div id="detail-content"></div><div class="actions"><button id="close-detail" type="button">Back to results</button></div></dialog>
@@ -100,7 +100,9 @@ for(const skill of skills)$('profile-skills').append(node('span',skill,'chip'));
 if(!skills.length)$('profile-skills').append(node('p','Add skills to your profile to help you explore relevant opportunities.'));
 function overlap(job){return job.skills.filter(s=>skills.some(k=>k.toLowerCase()===s.toLowerCase()));}
 function toggleSave(id){savedJobs=savedJobs.includes(id)?savedJobs.filter(x=>x!==id):[...savedJobs,id];try{localStorage.setItem('team4-saved-jobs',JSON.stringify(savedJobs));}catch(e){}render();$('search-status').textContent=savedJobs.includes(id)?'Job saved for later.':'Job removed from saved jobs.';}
+let hasSearched=false;
 function render(){
+$('results-heading').textContent=hasSearched?'Search results':'Suggested jobs based on your skills';
 const query=$('query').value.trim().toLowerCase(),region=$('search-location').value,industry=$('industry').value;
 let results=jobs.filter(j=>(industry==='all'||j.industry===industry)&&(region==='all'||j.region===region)&&(!query||[j.title,j.company,j.summary,j.industry,...j.skills].join(' ').toLowerCase().includes(query)));
 results=results.sort((a,b)=>overlap(b).length-overlap(a).length);
@@ -117,7 +119,7 @@ for(const [title,items] of [['Required qualifications',job.required],['Preferred
 if(overlap(job).length){const block=node('div',undefined,'detail-block');block.append(node('h3','Why this may be worth exploring'),node('p',job.connection),node('p','A skill connection is a starting point. It does not confirm that every required qualification is met.'));box.append(block);}
 $('job-detail').showModal();}
 $('close-detail').onclick=()=>$('job-detail').close();
-$('search-form').onsubmit=event=>{event.preventDefault();render();};
-$('clear').onclick=()=>{$('query').value='';$('search-location').value='all';$('industry').value='all';render();};
+$('search-form').onsubmit=event=>{event.preventDefault();hasSearched=true;render();};
+$('clear').onclick=()=>{hasSearched=false;$('query').value='';$('search-location').value='all';$('industry').value='all';render();};
 render();
 </script></body></html>
